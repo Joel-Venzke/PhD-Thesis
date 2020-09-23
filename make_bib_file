@@ -1,0 +1,1 @@
+bibtool -s -d imaging_ring_current.bib GAP_linear_ref.bib > ref.bib

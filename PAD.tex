@@ -1,0 +1,669 @@
+\chapter{Imaging attosecond wave packet dynamics with photoelectrons} % (fold)
+\label{cha:imaging_wave_packets_with_photoelectrons}
+
+Ultrabright light sources such as free-electron lasers \cite{seddon_short-wavelength_2017} and table-top laser systems based on high-order harmonic generation \cite{popmintchev_attosecond_2010,chini_generation_2014} deliver high-intensity pulses of few- or sub-femtosecond duration. Nowadays, laser pulses with a duration of a few tens of attoseconds have been achieved experimentally \cite{zhao_attosecond_2012,chen_generation_2014}. Isolated attosecond pulses or trains of attosecond pulses have been generated from the vacuum ultraviolet to the soft X-ray wavelength regime and the polarization of such pulses can nowadays be controlled. This recent progress in ultrafast laser pulse technology makes it possible to probe, steer and control the dynamics of electrons in atoms, molecules and solids \cite{vrakking_attosecond_2014,Pazourek2015,calegari_advances_2016,xu_time-resolved_2016,ramasesha_real-time_2016,peng_attosecond_2019}.
+To name a few examples, the time-resolved measurement of the electron emission in the photoelectric effect has been realized \cite{cavalieri_attosecond_2007,schultze_delay_2010,klunder2011, tao_direct_2016,isinger_photoionization_2017}. Using an isolated attosecond pulse or a train of extreme-ultraviolet attosecond pulses to ionize an atom along with an infrared laser field interferograms have been measured to obtain information about phases of electron wavepackets, an important milestone towards reconstructing the wavefunctions of atoms \cite{remetter_attosecond_2006,Mauritsson2010}. By extracting the phase and amplitude via application of photoelectron spectroscopy recently the birth of a photoelectron through a Fano resonance has been observed on the attosecond time scale \cite{gruson_attosecond_2016}.
+
+Probing atoms and molecules in their ground or excited states with ultrashort laser pulses opens a new regime where several linear and nonlinear ionization pathways compete and interfere \cite{PhysRevLett.108.033003,ma_photoelectron_2013,grum-grzhimailo_interfering_2015,douguet_photoelectron_2016,hofbrucker_maximum_2018,boll_angularly_2019,wang_time-dependent_2019,venzke_ionization_2020}. For example, it has been shown how the competition between resonant and nonresonant pathways depends on the pulse width \cite{PhysRevLett.108.033003}. An important observable are photoelectron angular distributions (PAD), which are measured by detecting the probability for emission of the electron from the target in different directions. Since PADs are determined by the amplitudes and phases of the partial waves of all pathways contributing to the emission, they are practical means to identify the different contributing pathways. A characteristic signature of such interferences are asymmetries in the emission of the photoelectron \cite{yin_asymmetric_1992}. In the simple case of photoionization from a single state, anisotropy and asymmetry parameters have been used in the past to identify and analyze interesting physical effects. A significant circular dichroism via the asymmetry in the forward-backward electron emission from bromocamphor molecules induced by circularly polarized light has been identified  \cite{bowering_asymmetry_2001}. Observation of the breakdown of the symmetry in the photoelectron emission of argon has been shown in the region of the Cooper minimum \cite{ilchen_symmetry_2018}. Interferences between resonant and non-resonant pathways \cite{PhysRevLett.108.033003} or direct and autoionizing channels \cite{cirelli_anisotropic_2018} can be identified via anisotropy and asymmetry parameters. Other examples can be found in double photoionization \cite{maulbetsch_asymmetry_1992} or molecular vibrations and chirality \cite{garcia_vibrationally_2013} and applications range from studies of coherent control \cite{prince_coherent_2016} to the characterization of ultrashort laser pulses \cite{chelkowski_sensitivity_2002}.
+
+In this chapter, I examine the photoangular distributions (PAD) produced when atoms are ionized by few photon processes induced by ultrashort pulses through the lens of imagining attosecond dynamics. In Sec.~\ref{sec:short_pulse_effect} I present the impact of the increased bandwidth of these short pulses the PAD for a two-photon process including intensity and pulse jitter studies. Sec.~\ref{sec:generalized_asymmetry_parameters}, I present a set of generalized asymmetry parameters (GAPs) that extend the standard front back asymmetry parameter to allow for studying interference of states with differing magnetic quantum numbers that are produced with circular and elliptically polarized laser pulses including a discussion of linear and circular probe pulses. Finally, I look at the time dependent ionization Helium atom in a $1s-2p_1$ and design tools capable of reconstructing dynamics that repeat over 200 attosecond period in Sec.~\ref{sec:wavefunction_reconstruction}
+
+% While studies of quantum systems in a single state are important, very interesting physics arises from the systems in superposition states. Nowadays the most prominent example of a two-level quantum mechanical system is a qubit with its important applications in quantum computation and quantum simulations \cite{saffman_atomic_qubits2016}. Yet, also the internal motion of quantum mechanical systems, whether it is rotational, vibrational or electronic, is determined via superposition states. In ultrafast science the observation and resolution of such dynamics and, hence, the observation of atoms or molecules in superposition states has always played a central role. Currently, it is the superposition of atomic or molecular electronic states and the related attosecond electron dynamics that is the focus of studies in the field \cite{goulielmakis_real-time_2010,Mauritsson2010,holler2011,xie2012}. Perhaps the simplest case of such dynamics is a helium atom in a superposition of $1s$ and $2p_1$ state which results in a wavepacket rotating in a plane around the nucleus with a period of $\sim200$ attoseconds. The dynamics in such quantum systems in superposition states can be probed via ionization with an ultrashort laser pulse. Unlike for the ionization of a quantum system prepared in a single state, e.g. the ground state, conventional anisotropy and asymmetry parameters fail to provide comprehensive tools for the analysis of photoionization from atomic superposition states. For example, the simplest case of a competition between one- and two-photon ionization processes can be analyzed using asymmetry parameters if the atom is prepared in the ground state \cite{PhysRevLett.108.033003,ma_photoelectron_2013,grum-grzhimailo_interfering_2015,douguet_photoelectron_2016,hofbrucker_maximum_2018,boll_angularly_2019,wang_time-dependent_2019,venzke_ionization_2020}. In contrast, these analysis tools are either not applicable or do not provide a straightforward interpretation for the same processes if the atom is in the superposition of two states. Thus, an extension of the toolbox for the characterization of the states and the identification of competing pathways is desirable. In this paper, we propose a new set of generalized asymmetry parameters which are sensitive to interference effects in the photoionization of atomic systems in superposition states. As we will show these new parameters can be used to identify the interplay of competing linear and nonlinear pathways at low and high intensities, as well as at ultrashort pulse durations. The application and relevance of the parameters is tested using state-of-the-art numerical solutions of the time-dependent Schr\"odinger equation. Our method provides a new approach to the analysis of experiments dedicated to resolving attosecond electron dynamics.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Short pulse effect in helium} % (fold)
+\label{sec:short_pulse_effect}
+The production of extreme-ultraviolet (EUV) pulses using high harmonic generation (HHG) and free-electron lasers (FEL) has led to a resurgence of multiphoton ionization studies in the perturbative intensity regime recently \cite{nikolopoulos01,vanderhart05,shakeshaft07,pi10,florescu11,sato11,haber11,florescu12,ishikawa12,ishikawa13,ma13,rey14,grum-grzhimailo15,douget16,hofbrucker17,hofbrucker18,boll19,wang19}. Along with experimental techniques, such as velocity map imaging \cite{kornilov10,rouzee11} or cold target recoil ion momentum spectroscopy \cite{ullrich03}, the detection of angle-resolved emission of the photoelectron following few-photon ionization of atomic and molecular targets has become possible \cite{ma13}. Photoelectron angular distributions (PAD) are determined by the amplitudes and phases of the partial waves of all pathways contributing to the emission at a given energy into a given solid angle. PADs and related anisotropy parameters are therefore useful observables to obtain quantitative insights in the relative strength of the different pathways and their competition. This has been demonstrated in the past for the competition between resonant and non-resonant two-photon ionization pathways \cite{ishikawa12,ishikawa13,ma13} and for one- and two-photon ionization channels \cite{grum-grzhimailo15,douget16,boll19}
+
+Two-photon ionization of atoms, specifically the helium atom, have been studied in theory and experiment in the past, first concerning total ionization yields  \cite{nikolopoulos01,vanderhart05,shakeshaft07,pi10,florescu11,sato11,florescu12} and, more recently, with a focus on photoelectron angular distributions \cite{ishikawa12,ishikawa13,ma13,boll19}. It has been shown, that the PADs strongly depend on the pulse duration or, equivalently, the spectral width of the EUV pulses. Initially, theoretical studies by Ishikawa and Ueda revealed that the competition between resonant and nonresonant pathways depends on the pulse width \cite{ishikawa12,ishikawa13}. Changes in the PADs for 1 - 21 fs pulses at photon energies below the first ionization energy were characterized by the even anisotropy parameters $\beta_2$ and $\beta_4$. Via these parameters the relative phase between the $s$- and $d$-wave packets for the photoelectron emission can be determined. Related experimental work at the SPring-8 Compact SASE Source test accelerator verified the co-presence of the two pathways \cite{ma13}. Very recently, Boll et al. extended these studies, covered a much wider photon energy range and explored the impact of radial and angular electron correlation \cite{boll19}. They showed that in the low-energy regime
+a single-active-electron picture is valid while at higher energies in the regime of autoionizing states angular correlations play a major role for the understanding of the PADs.
+
+The ongoing quest in shortening pulses at extreme- and deep-ultraviolet wavelengths towards the single-cycle regime in duration are achieved via large spectral widths. Such broadband energy pulses give rise to competition between one- and two-photon (as well as three-photon) ionization processes for emission at a given energy. As mentioned in Ref. \cite{boll19}, in helium atom this leads to the additional interference of the $s$- and $d$-wave packets due to two-photon absorption with a $p$-wave packet from single photon absorption. In this work, we study the transition regime between single photon ionization and two-photon absorption. We first show how in this regime the PADs quickly change over a small window of pulse duration, about 1 cycle in full width at half maximum (FWHM). The variation is reflected in the anisotropy parameters $\beta_i$ ($i = 1, 2, 3$ and $4$), which show the transition as well as the interference between the ionization pathways. The dependence on pulse duration, photon energy as well as photoelectron energy is studied. We further consider how variation of pulse parameters, such as the carrier-envelope-phase (CEP), the peak intensity, and the partial coherence of FEL pulses, do impact the anisotropy parameters. Finally, we briefly study at which intensities three-photon ionization, which occurs for these large bandwidth pulses as well, may become observable. In order to accurately account for the different pulse parameters, we have performed simulations based on the time-dependent Schr\"odinger equation. 
+Since a recent study has shown that for pulses with central photon frequency below the first ionization potential of the helium atom the single active electron (SAE) picture remains valid \cite{boll19}, we have used a SAE potential for our numerical simulations. 
+
+We solve the time dependent Schr\"odinger equation for the interaction of a electron in a spherically symmetric single-active-electron (SAE) potential with the electric field ${\bf E}$ of a linearly polarized laser pulse (along the ${\hat z}$-direction) in dipole approximation and length gauge (we use Hartree atomic units $e = m_e = \hbar =1$): 
+%
+\begin{equation}
+i\frac{\partial}{\partial t}\Psi(\mathbf{r},t) = \left[-\frac{\nabla^2}{2} - \mathbf{E}(t) \cdot \mathbf{z} + V(r)\right]\Psi(\mathbf{r},t).
+\end{equation}
+%
+The wavefunction $\Psi$ is expanded in spherical harmonics up to $l_{max} = 20$ with $m=0$ due to the symmetry of the problem. The radius is discretized using fourth order finite difference method with a grid spacing of 0.05 a.u. and a maximum radius of 300 a.u. We utilized the exterior complex scaling method on the outer 30 a.u. of the grid. The wavefunction is propagated in time using the Crank-Nicolson method with a time step of 0.01 a.u. In test calculations the numerical code was compared against results from a previously used 2D cylindrical code \cite{venzke18ryd}, results from time-dependent perturbation theory in the appropriate intensity and frequency regimes, as well as results reported in the literature \cite{scrinzi10}. Quantitative agreement was achieved.
+
+In our work we consider ionization of helium atom with pulses at central photon energies below the first ionization potential. In a recent study \cite{boll19} it has been shown that in this photon energy regime the SAE picture remains valid. We therefore utilize a SAE potential for helium atom 
+%
+\begin{equation}
+V(r) = -\frac{1}{r} - \frac{e^{-2.0329r}}{r} - 0.3953 e^{-6.1805r}.
+\end{equation}
+%
+Our numerical simulations have been performed for laser pulses with central frequencies at or near to the energy difference between the field-free $1s$ and $2p$ state of the helium atom. In our SAE model of helium the ground state energy is -0.944 a.u., while the $2p$ energy is -0.128 a.u.
+
+To ensure that the electric field 
+integrates to zero \cite{chelkowski02}, we set the vector potential as
+%
+\begin{eqnarray}
+A(t) &=& 
+      A_0 \exp\left(-\ln(2)\left(\frac{2(t-\tau_0)}{T}\right)^2\right)
+      \nonumber
+      \\
+      && \times \sin\left(w_A(t-\tau_0)+\phi \right) 
+      \label{eq:vectorp}
+\end{eqnarray}
+%
+with $A_0 = \frac{c\sqrt{I_0}}{\omega_A}$, $T = \frac{2\pi N}{\omega_A}$, $c$ is the speed of light, $I_0$ the peak intensity, $N$ the number of cycles in the pulse, $\omega_A$ denotes the central frequency of the vector potential, and $\phi$ is the carrier-to-envelope phase. The electric field is then obtained as
+\begin{equation}
+    E(t) = -\frac{1}{c}\frac{\partial}{\partial t}A(t)\, .
+    \label{eq:e-field}
+\end{equation}
+The central frequencies of the spectral distributions of the vector potential, $\omega_A$, and the electric field, $\omega_E$, can differ significantly for an ultrashort laser pulse \cite{venzke18freq}. In the presentation of the results below we state the physically relevant central frequency $\omega_E$, in the simulations $\omega_A$ is determined such that $\omega_E$ matches the reported central frequency \cite{venzke18freq}. 
+
+As result of our ab-initio numerical calculations we obtain the wavefunction at the end of the interaction with the laser pulse. Via projection on continuum states we can then determine the ionization probability as well as photoelectron energy and angular distributions. If more than one pathway, here, e.g., one- and two-photon ionization, contribute to the emission of the photoelectron at a given energy in a given direction, our numerical simulations do not allow for the separate the respective probabilities for each channel easily. This is in contrast to calculations based on perturbation theory, in which the amplitude for each pathway is evaluated and can be analyzed separately. In order to analyze the dominant pathways for photoemission as functions of intensity, photoelectron energy and pulse duration, we therefore determine anisotropy parameters ($\beta$-parameters), which provide quantitative insights in the different pathways involved as well as the interference between them \cite{grum-grzhimailo15,douget16,boll19}.
+
+It has been shown \cite{laplanche86} that the photoelectron angular distribution for an isotropic target is given by: 
+%
+\begin{equation}
+\label{beta}
+    P(E,\theta) = \frac{\sigma(E)}{4\pi} \left[ 1 + \sum\limits_{j=1}^{n} \beta_j(E) P_j(\cos(\theta)) \right]
+\end{equation}
+%
+where $\theta$ is the angle of electron emission with respect to the polarization direction of the laser field, while $\sigma(E)$ is the ionization probability at E and $P_j$ are the Legendre polynomials. The anisotropy parameters $\beta_j$ depend on the amplitudes of the different pathways leading to emission of the photoelectron (for explicit expressions, see  \cite{grum-grzhimailo15}). For combinations of one- and two-photon ionization processes, that will be the focus of this work, contributions from the first four $\beta_j$-parameters are expected. The contributions related to the odd polynomials indicate interference between partial waves resulting from one- and two-photon absorption. We also note that the impact of three-photon ionization, that we will briefly consider below, is expected to show up in the anisotropy parameter $\beta_5$ and higher order parameters.
+
+We have determined the anisotropy parameters in our calculations using Equation (\ref{beta}) as follows. At the end of the simulations of the time-dependent Schr\"odinger equation we obtained the photoelectron angular distribution at a given momentum $k$ by projecting the wavefunction onto the field-free continuum states on the numerical grid. The numerically obtained PAD has been then projected onto the $j$-th  Legendre polynomial $P_j$ ($j = 1, \ldots, 5$) and the results have been normalized using the total ionization probability $\sigma$.  
+
+Following a general discussion of the processes involved in subsection 3.1, we present PADs and related anisotropy parameters for pulses having a Gaussian envelope. The results are analyzed, in view of a competition between one- and two-photon ionization, as a function of pulse duration, central frequency and peak intensity in subsection 3.2. Fluctuations of the carrier-envelope-phase, the peak intensity and the partial coherence of FEL pulses are studied in subsection 3.3.
+
+\begin{figure}[t]
+\centering
+% \includegraphics[width=.3\linewidth]{scheme_1-photon.eps}
+% \includegraphics[width=.3\linewidth]{scheme_2-photon.eps}
+% \includegraphics[width=.36\linewidth]{scheme_3-photon.eps}
+\caption{
+Schematic representation of one- (a), two- (b), and three-photon (c) ionization in an ultrashort pulse. The Gaussian distribution shows the spectral width of the ultrashort pulse centered about the energy of the $2p$-state. The red arrows represent the photon absorption pathways, and the black lines depict some of the resonant structure of the helium atom.
+} 
+  \label{fig:scheme}
+\end{figure}
+
+To first illustrate the impact of the one-, two- and three-photon ionization pathways on the emission of the photoelectron in ultrashort laser pulses, let us consider an emission induced by a pulse with central frequency $\omega_0$ tuned to the $1s-2p$ energy gap. The broad energy spectrum of an ultrashort Gaussian pulse is schematically depicted in the panels of Figure \ref{fig:scheme} centered about the energy of the $2p$-state. Absorption of two photons by an electron in the ground state at the central frequency $\omega_0$ (c.f., Figure \ref{fig:scheme}(b)) will lead to its emission at energy $E = 2\omega_0 - |E_{1s}|$. If the bandwidth of the pulse is broad enough (i.e., the pulse duration is sufficiently short) ionization of a photoelectron with the same photoelectron energy can occur via absorption of one photon with energy $2 \omega_0$ (c.f., Figure \ref{fig:scheme}(a)) or via absorption of three photons with energy $\frac{2}{3} \omega_0$ (c.f., Figure \ref{fig:scheme}(c)). We note that besides the two-photon and three-photon pathways with absorption of photons of equal energies, there exist more such pathways to a final photoelectron energy $E$ for absorption of photons with unequal energy as long as the sum of the photon energies is equal to $2 \omega_E$.
+
+The occurrence of the one- and three-photon processes requires a broad spectral bandwidth of the pulse. That means, for long pulses we expect that only the two-photon ionization process is present. If the pulse is shortened to a few optical cycles, both the one- and three-photon channels become effective, since the probability of photon absorption at energies away from the central frequency increases. In the perturbative intensity regime the probability for a $n$-photon process scales as $I^n$, where $I$ is the intensity of the pulse. We therefore expect that at a given ultrashort pulse duration at low intensities the one-photon process dominates over the two-photon process in an ultrashort laser pulse. As the intensity increases, first the two-photon process should then become dominant, before at significant high intensities contributions from the three-photon process will become detectable. In the present paper, we mainly study the transition from one- to two-photon processes, while the influence of the three-photon process will be given minor attention. 
+
+\begin{figure}[t]
+\centering
+% \includegraphics[width=\linewidth]{fig_1.eps}
+\caption{
+Photoelectron angular distributions for helium atom ionized by laser pulses at central photon energy $\omega_0 = 22.2$ eV, peak intensity $I_0 = 10^{11}$ W/cm$^2$, carrier-to-envelope phase $\phi = 0$ and three different pulse durations: $N = 0.6$ FWFM cycles (0.112 fs, left column), $N = 1.2$ FWHM cycles (0.224 fs, middle column) and $N = 1.8$ FWHM cycles (0.335 fs, right column). Angular distributions are obtained for three values of photoelectron energy $E = 1.45(2\omega_0 - |E_{1s}|) = 1.0$ a.u. (top row), $E = 2\omega_0 - |E_{1s}|$ = 0.687 a.u. (middle row), and $E = 0.58(2\omega_0 - |E_{1s}|) = 0.4$ a.u. (bottom row), where $E_{1s}$ is the energy of the $1s$ state in the SAE potential.
+} 
+  \label{fig:pads}
+\end{figure}
+
+In Figure \ref{fig:pads} we present examples of PADs that show the transition from single photon ionization, illustrated by the $p$-wave character of the distribution (panels (d, g, h)), to an emission following two-photon absorption, highlighted by the dominating $d$-wave character in the PAD (panels (b, c, f)). The results are obtained for ionization by a laser pulse at a central photon energy $\omega_0 = 22$ eV, which corresponds to the energy difference between the $1s$- and $2p$-states in the single-active-electron potential for helium used in the calculations, peak intensity $I_0 = 10^{11}$ W/cm$^2$ and carrier-to-envelope phase $\phi = 0$. At a given photoelectron energy, the transition occurs for a variation of the pulse duration, e.g.\ at $E = 2\omega_0 - |E_{1s}|$ = 0.687 a.u. from 0.112 fs to 0.335 fs (middle row). Conversely, for a fixed pulse duration, the transition is seen for increase of the photoelectron energy, e.g.\ at $\tau = 0.224$ fs from 0.4 a.u. to 1.0 a.u. (middle column). In the transition regime the PADs exhibit the interference between the one- and two-photon ionization processes. 
+
+\begin{figure}[t]
+\centering
+% \includegraphics[width=0.75\linewidth]{beta_0_cyc.eps}\\
+\caption{Cross section $\sigma(E)$ as a function of peak intensity for photoelectron emission at energy $E = 2\omega_0 - I_p = 18.7$ eV in 0.5-cycle (one-photon process dominates), 1.0-cycle (transition regime), and 1.5-cycle (two-photon process dominates). Central photon energy $\omega_0 = |E_{2p} - E_{1s}| = 22.2$ eV and carrier-to-envelope phase $\phi=0$
+} 
+  \label{fig:cross}
+\end{figure}
+
+Further insights in the transition between the two processes can be found via the cross section $\sigma(E)$
+and the first four anisotropy parameters $\beta_i$ ($i = 1, \ldots, 4$) . In Figure \ref{fig:cross} the results for the cross section are shown as function of peak intensity at fixed photon and photoelectron energies. The cross section for a 0.5 cycle pulse has a slope of one corresponding to the dominance of one photon ionization over the whole intensity regime. In contrast, the cross section obtained for the 1.5 cycle pulse is dominated by the two photon process due to the reduced bandwidth of the pulse. In the data for the 1-cycle pulse the transition from the one- to the two-photon process is seen to occur near 10$^{12}$ W/cm$^2$. 
+
+\begin{figure}[t]
+\centering
+% \includegraphics[width=0.49\linewidth]{beta_1_heat.eps}
+% \includegraphics[width=0.49\linewidth]{beta_2_heat.eps}\\
+% \includegraphics[width=0.49\linewidth]{beta_3_heat.eps}
+% \includegraphics[width=0.49\linewidth]{beta_4_heat.eps}
+\caption{
+Parameters $\beta_1$ (a) to $\beta_4$ (d) as function of pulse duration (FWHM) and peak intensity. Central photon energy $\omega_0 = |E_{2p} - E_{1s}| = 22.2$ eV, carrier-to-envelope phase $\phi=0$ and photoelectron energy $E = 2\omega_0 - I_p = 18.7$ eV.
+} 
+  \label{fig:beta}
+\end{figure}
+
+In Figure \ref{fig:beta} the results for the \textbf{$\beta$}-parameters are shown as function of pulse duration and peak intensity at fixed photon and photoelectron energies. The even $\beta$-parameters show the transition from dominant one-photon ionization ($\beta_2 > 0$, $\beta_4 \approx 0$) to dominant two-photon ionization ($\beta_2 \approx 0$, $\beta_4 > 0$), while the odd $\beta$-parameters exhibit the regime of interference between the two processes ($\beta_1 < 0$ and $\beta_3 < 0$ for $\phi=0$). The latter peak where the magnitudes of the two transition amplitudes coincide. At a given peak intensity the interference regime extends over a change of pulse duration of about 0.5 cycles at FWHM. For a fixed pulse duration, the interference regime extends over a variation of peak intensity by a factor of 2-5. The results are therefore rather stable with respect to intensity fluctuations of the pulse. The impact of other potential pulse fluctuations in the experiment on the $\beta$-parameters will be discussed in subsection \ref{sec:variation}.
+
+The transition probabilities of the one- and two-photon processes, $\sigma_1$ and $\sigma_2$, scale linearly and quadratically with intensity. Assuming that the two-photon ionization process involves predominantly the absorption of photons at equal energies, the peak intensity at maximum interference can be estimated as $I_{infer} \propto D^{(1)}(E)f(\Omega)/(D^{(2)}(E)f^2(\omega))$, where $D^{(i)}(E)$ is the square of the transition dipole moments for the one- and two-photon process, $f$ is the spectral distribution of the pulse and $\Omega = 2\omega = E + |E_{1s}|$. Since $\omega = \omega_0$ for the results in Figure \ref{fig:beta}, $f(\omega) = f(\omega_0) = 1$ and $I_{infer} \propto f(\Omega)$. Thus, we expect that the interference between the two processes requires a larger spectral bandwidth, i.e. shorter pulse duration, the larger the peak intensity of the pulse. The results in Figure \ref{fig:beta} confirm this expectation.
+
+\begin{figure}[t]
+\centering
+% \includegraphics[width=0.49\linewidth]{energy_d1p1_beta_1_I_1_heat.eps}
+% \includegraphics[width=0.49\linewidth]{energy_d1p1_beta_2_I_1_heat.eps}\\
+% \includegraphics[width=0.49\linewidth]{energy_d1p0_beta_1_I_1_heat.eps}
+% \includegraphics[width=0.49\linewidth]{energy_d1p0_beta_2_I_1_heat.eps}\\
+% \includegraphics[width=0.49\linewidth]{energy_d0p9_beta_1_I_1_heat.eps}
+% \includegraphics[width=0.49\linewidth]{energy_d0p9_beta_2_I_1_heat.eps}\\
+\caption{
+Anisotropy parameters $\beta_1$ (left) and $\beta_2$ (right) as function of pulse duration and photoelectron energy $E$ for central frequencies $\omega_0 = 1.1 |E_{1s}-E_{2p}|$ (top row), $\omega_0 = |E_{1s}-E_{2p}|$ (middle row) and $\omega_0 = 0.9 |E_{1s}-E_{2p}|$ (bottom row) at peak intensity of $10^{11}$ W/cm$^2$ and $\phi = 0$. In each panel the dashed line corresponds to $E = 2\omega_0 - I_p$. 
+} 
+  \label{fig:beta_omega}
+\end{figure}
+
+Next, we consider how the transition between the two pathways depends on the photoelectron energy and the central photon frequency at a given peak intensity $I_0 = 10^{11}$ W/cm$^2$ and carrier-to-envelope phase $\phi = 0$. To this end, we show in the Figure \ref{fig:beta_omega} the 
+anisotropy parameters $\beta_1$ (left column) and $\beta_2$ (right column) as a function of photoelectron energy and pulse duration for central frequencies below (top row), on (middle row) and above (bottom row) resonance with the $1s - 2p$ transition in the helium single-active-electron potential. We restrict ourselves to $\beta_1$ and $\beta_2$ since the higher order $\beta$-parameters contain equivalent information (see Figure \ref{fig:beta}). Also shown in Figure \ref{fig:beta_omega} is the photoelectron energy $E = 2\omega_0 - I_p$, corresponding to a two-photon transition at the central frequency $\omega_0$. 
+
+The comparison shows that the transition regime depends on the central frequency, since the regime shifts for a given pulse duration to larger photoelectron energies as the central frequencies increases (from bottom to top). At a given central frequency, the pulse duration, at which the transition between the one- and two-photon ionization pathways occurs, increases as the photoelectron energy decreases. Qualitatively, this dependence can be understood using the relation $I_{infer} \propto D^{(1)}(E)f(\Omega)/(D^{(2)}(E)f^2(\omega))$. For photoelectron energies larger than $E = 2\omega_0 - I_p$ (dashed line), both $\omega$ and $\Omega$ are larger than the central frequency. Consequently, at large photoelectron energies a broader spectral distribution (shorter pulse duration) is required for the same value of $f(\Omega)/f^2(\omega)$ than at photoelectron energies below $E = 2\omega_0 - I_p$ (dashed line), where $\omega < \omega_0$ while $\Omega > \omega_0$. 
+
+\begin{figure}[t]
+\centering
+% \includegraphics[width=0.49\linewidth]{beta_5_heat.eps}
+% \includegraphics[width=0.49\linewidth]{energy_d0p9_beta_5_I_2_heat.eps}\\
+\caption{
+Anisoptropy parameter $\beta_5$ (a) as function of pulse duration and peak intensity at central frequency $\omega_0 = |E_{1s}-E_{2p}|$ and photoelectron energy $2\omega_0 - |E_{1s}|$ and (b) as function of pulse duration and photoelectron energy at central frequency $\omega_0 = 0.9|E_{1s}-E_{2p}|$ and peak intensity of $10^{13}$ W/cm$^2$. The dotted lines correspond to $E = 2\omega_0 - I_p$ and $E = 3\omega_0 - I_p$. The other parameters are as in Figures \ref{fig:beta} and \ref{fig:beta_omega}, respectively. 
+} 
+  \label{fig:beta-3w}
+\end{figure}
+
+In the limit of short pulses and high intensities, both the one- and three-photon processes can interfere since the three-photon process scales with $I^3$. The results for the anisotropy parameter $\beta_5$ in Figure \ref{fig:beta-3w} confirm this expectation. At a photoelectron energy of $2\omega_0 - |E_{1s}|$ (panel (a)) a peak intensity of about $10^{14}$ W/cm$^2$ and a rather large spectral bandwidth is required to facilitate the three-photon process with significant probability since the corresponding photon energies are smaller than the central frequency. The distribution over photoelectron energy (panel (b)) shows that the impact of the three-photon ionization process is indeed more visible at energies near $E = 3\omega_0 - |E_{1s}|$.
+
+
+For the discussion in the previous subsection we have considered results obtained at fixed pulse parameters. The results in Figures \ref{fig:beta} and \ref{fig:beta_omega} show that the transition regime occurs over a rather small window of pulse duration while it appears to be rather stable for variations of the peak intensity up to half an order of magnitude. The photon energies in the extreme ultraviolet can be nowadays generated using high-order harmonics or free electron lasers. In view of the technical difficulties to control the carrier-to-envelope (CEP) of ultrashort pulses as well as the fluctuating pulse shapes in the self-amplified spontaneous emission (SASE) mode of free electron lasers, we have studied the impact of these variations on the anisotropy parameters. 
+
+\begin{figure}[t]
+\centering
+% \includegraphics[width=0.49\linewidth]{Beta_vs_cep.eps}\\
+% \includegraphics[width=0.49\linewidth]{Beta_vs_cep_0p20.eps}
+% \includegraphics[width=0.49\linewidth]{Beta_vs_cep_0p40.eps}
+\caption{
+Anisotropy parameters $\beta_1$ (solid line), $\beta_2$ (dashed line), $\beta_3$ (dotted line) and $\beta_4$ (dashed-dotted line) as function of carrier-envelope-phase. The results averaged using a Gaussian distribution for the CEP (c.f., Eq.\ (\ref{eq:gauss_window})) with widths of (b) $\alpha = 0.2$ (in units of $2\pi$) and (c) $\alpha = 0.4$ are compared with the unaveraged results (a). Peak intensity: $10^{11}$ W/cm$^2$, central frequency:  $\omega_0 = |E_{1s}-E_{2p}|$, pulse duration: 1.2 FWHM cycles and photoelectron energy $2\omega_0 - |E_{1s}|$.
+} 
+  \label{fig:beta_cep}
+\end{figure}
+
+To study the dependence on the CEP we have averaged the results about a given value $\phi_0$ using a Gaussian distribution of width $\alpha$ as: 
+%
+\begin{equation}
+\beta_j^{(\alpha)}(\phi_0) 
+= 
+\frac{\sum_i \exp\left[-\frac{1}{2}\left(\frac{|\phi_i-\phi_0|}{2\pi\alpha}\right)\right] \sigma(\phi_i) \beta_j(\phi_i)}
+{\sum_i\exp\left[-\frac{1}{2}\left(\frac{|\phi_i-\phi_0|}{2\pi\alpha}\right)\right] \sigma(\phi_i)}\; ,
+    \label{eq:gauss_window}
+\end{equation}
+%
+where $\sigma(\phi_i)$ is the total ionization probability at CEP $\phi_i$. The results for averages with (b) $\alpha = 0.2$ and (c) $\alpha = 0.4$ are compared in Figure \ref{fig:beta_cep} with the unaveraged results (panel (a)). As expected, the odd $\beta$-parameters, which reflect the interference between the one- and two-photon processes, strongly depend on CEP, while the even parameters are independent of it. Thus, the transition from one-photon to two-photon ionization can be observed via $\beta_2$ and $\beta_4$ even in pulses without CEP stabilization. Although the odd parameters depend on CEP, the corresponding results appear to be indicative for the transition up to fluctuations of about $\pi/2$.
+
+We have further studied the impact of fluctuations of temporal FEL laser pulse shapes \cite{mitzner08}. We note that current FEL technology does not provide the bandwidth required to generate pulses down to the one- or two-cycle limit at the photon energies considered here. We may still attempt to give some theoretical insights concerning the robustness of the signal against the major fluctuations present in an FEL pulse. To this end, we have applied a partial coherence method, which has been used before to model longer FEL pulses \cite{pfeiffer10}. We note that future technological progress towards generation of ultrashort FEL pulses in the EUV regime may necessitate to extent the current approach.
+
+To generate the FEL pulses used in the numerical simulations, the spectrum of a vector potential with Gaussian envelope corresponding to peak intensity $I_0$ and FWHM pulse duration $\tau_0$ is used as an input. Each spectral component is then multiplied with a random phase factor and an inverse Fourier transform is taken producing $A'(t)$, which is then normalized and windowed in time to give:
+\begin{equation}
+    A_{FEL}(t) = A_0 f(t)\frac{Re\left[A'(t)\right]}{\max|Re\left[A'(t)\right]|}
+\end{equation}
+where $A_0$ is given below Equation (\ref{eq:vectorp}) and $f(t)$ represents the envelope, here a Gaussian envelope. The electric field of the FEL pulse is then obtained using Equation (\ref{eq:e-field}). The resulting pulse simulates the partially coherent nature of the SASE pulses produced by an FEL. 
+The average of results from numerical simulations over an increasing number of shots is expected to resemble results similar to those produced during an FEL beam-time. Here, the $\beta$-parameters are calculated using a weighted average
+% 
+\begin{equation}
+\beta_j^{FEL}(E) 
+= 
+\frac{\sum_i^{N_{shots}}  \sigma_i(E) \beta_{j,i}(E)}
+{\sum_i^{N_{shots}}\sigma_i(E)}\; ,
+    \label{eq:FEL_beta}
+\end{equation}
+% 
+to account for the photoelectron yield shot to shot.
+
+\begin{figure}[t]
+\centering
+% \includegraphics[width=0.49\linewidth]{Beta_1_FEL_1_shot.eps}
+% \includegraphics[width=0.49\linewidth]{Beta_2_FEL_1_shot.eps}\\
+% \includegraphics[width=0.49\linewidth]{Beta_1_FEL_10_shot.eps}
+% \includegraphics[width=0.49\linewidth]{Beta_2_FEL_10_shot.eps}\\
+% \includegraphics[width=0.49\linewidth]{Beta_1_FEL_200_shot.eps}
+% \includegraphics[width=0.49\linewidth]{Beta_2_FEL_200_shot.eps}
+\caption{
+Anisotropy parameters $\beta_1$ (left) and $\beta_2$ (right) as function of pulse duration of the Gaussian window used in modeling the FEL pulses and photoelectron energy averaged over 10 (middle row) and 200 (bottom row) partially incoherent free electron pulses as compared to a single shot result (top row). Peak intensity of the Gaussian window: $I_{0} = 10^{11}$ W/cm$^2$ 
+and central frequency of the spectral distribution $\omega_0 = |E_{1s}-E_{2p}|$. 
+} 
+  \label{fig:beta-variation-FEL}
+\end{figure}
+
+In Figure \ref{fig:beta-variation-FEL} we compare the results for $\beta_1^{FEL}$ (left) and $\beta_2^{FEL}$ (right) as function of photoelectron energy and pulse duration of the Gaussian window used in modeling the FEL pulses, averaged over 10 (panels (c, d)) and 200 (panels (e, f)) FEL shots for each pulse length (i.e., 6,200 calculations in total) with the exemplary results from a single shot (panels (a,b)). A robust distribution for $\beta_2^{FEL}$ emerges as the number of shots increases, clearly showing the transition from a one- to a two-photon process (the same conclusion holds for $\beta_4^{FEL}$, not shown). However, the interference in the photoelectron angular distributions cannot be determined via FEL laser pulses, since the results for $\beta_1^{FEL}$ and $\beta_3^{FEL}$ (not shown) average to zero in the transition regime. 
+We note that the generated FEL pulses are not transform-limited and the pulse duration of the Gaussian window used in modeling the pulses does not correspond to that of Gaussian pulses used in the previous subsection \ref{sec:pads}.
+Comparing the data presented in Figure \ref{fig:beta-variation-FEL}(f) with those in Figure \ref{fig:beta_omega}(d) we estimate that the effective pulse duration of a bandwidth-limited Gaussian pulse with a spectrum corresponding to the average spectrum of the generated FEL pulses is about 0.6 times shorter than that of the Gaussian window.
+
+In this work we have provided theoretical results, obtained from numerical solutions of the time-dependent Schr\"odinger equation, for the competition between one-photon and two-photon ionization in an ultrashort extreme-ultraviolet laser pulse. We have shown that the transition between the two processes can be observed in the photoelectron angular distributions and the related anisotropy parameters $\beta_i$ ($i = 1, \ldots 4$) as function of pulse duration, peak intensity, central photon frequency and photoelectron energy distribution. While the even $\beta$-parameters exhibit the transition via a change from zero to a finite value, the odd parameters indicate the interference regime. At given photon and photoelectron energies this regime extends over about 0.5 FWHM cycles in duration and a variation by a factor of 2-5 in peak intensity. The impact of three-photon ionization, which becomes available at these broadband pulses as well, is seen at high intensities and large photoelectron energies. Finally, we have considered typical variations in the CEP of ultrashort pulses, e.g. as produced in high harmonic generation, and fluctuating pulse shapes in free-electron laser pulses. It is found that the transition between one- and two-photon ionization can be observed via the even $\beta$-parameters in FEL pulses and pulses without CEP stabilization.
+% section short_pulse_effect (end)
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Generalized asymmetry parameters} % (fold)
+\label{sec:generalized_asymmetry_parameters}
+
+\section*{Introduction}
+
+
+Ultrabright light sources such as free-electron lasers \cite{seddon_short-wavelength_2017} and table-top laser systems based on high-order harmonic generation \cite{popmintchev_attosecond_2010,chini_generation_2014} deliver high-intensity pulses of few- or sub-femtosecond duration. Nowadays, laser pulses with a duration of a few tens of attoseconds have been achieved experimentally \cite{zhao_attosecond_2012,chen_generation_2014}. Isolated attosecond pulses or trains of attosecond pulses have been generated from the vacuum ultraviolet to the soft X-ray wavelength regime and the polarization of such pulses can nowadays be controlled. This recent progress in ultrafast laser pulse technology makes it possible to probe, steer and control the dynamics of electrons in atoms, molecules and solids \cite{vrakking_attosecond_2014,Pazourek2015,calegari_advances_2016,xu_time-resolved_2016,ramasesha_real-time_2016,peng_attosecond_2019}.
+To name a few examples, the time-resolved measurement of the electron emission in the photoelectric effect has been realized \cite{cavalieri_attosecond_2007,schultze_delay_2010,klunder2011, tao_direct_2016,isinger_photoionization_2017}. Using an isolated attosecond pulse or a train of extreme-ultraviolet attosecond pulses to ionize an atom along with an infrared laser field interferograms have been measured to obtain information about phases of electron wavepackets, an important milestone towards reconstructing the wavefunctions of atoms \cite{remetter_attosecond_2006,Mauritsson2010}. By extracting the phase and amplitude via application of photoelectron spectroscopy recently the birth of a photoelectron through a Fano resonance has been observed on the attosecond time scale \cite{gruson_attosecond_2016}.
+
+Probing atoms and molecules in their ground or excited states with ultrashort laser pulses opens a new regime where several linear and nonlinear ionization pathways compete and interfere \cite{PhysRevLett.108.033003,ma_photoelectron_2013,grum-grzhimailo_interfering_2015,douguet_photoelectron_2016,hofbrucker_maximum_2018,boll_angularly_2019,wang_time-dependent_2019,venzke_ionization_2020}. For example, it has been shown how the competition between resonant and nonresonant pathways depends on the pulse width \cite{PhysRevLett.108.033003}. An important observable are photoelectron angular distributions (PAD), which are measured by detecting the probability for emission of the electron from the target in different directions. Since PADs are determined by the amplitudes and phases of the partial waves of all pathways contributing to the emission, they are practical means to identify the different contributing pathways. A characteristic signature of such interferences are asymmetries in the emission of the photoelectron \cite{yin_asymmetric_1992}. In the simple case of photoionization from a single state, anisotropy and asymmetry parameters have been used in the past to identify and analyze interesting physical effects. A significant circular dichroism via the asymmetry in the forward-backward electron emission from bromocamphor molecules induced by circularly polarized light has been identified  \cite{bowering_asymmetry_2001}. Observation of the breakdown of the symmetry in the photoelectron emission of argon has been shown in the region of the Cooper minimum \cite{ilchen_symmetry_2018}. Interferences between resonant and non-resonant pathways \cite{PhysRevLett.108.033003} or direct and autoionizing channels \cite{cirelli_anisotropic_2018} can be identified via anisotropy and asymmetry parameters. Other examples can be found in double photoionization \cite{maulbetsch_asymmetry_1992} or molecular vibrations and chirality \cite{garcia_vibrationally_2013} and applications range from studies of coherent control \cite{prince_coherent_2016} to the characterization of ultrashort laser pulses \cite{chelkowski_sensitivity_2002}.
+
+While studies of quantum systems in a single state are important, very interesting physics arises from the systems in superposition states. Nowadays the most prominent example of a two-level quantum mechanical system is a qubit with its important applications in quantum computation and quantum simulations \cite{saffman_atomic_qubits2016}. Yet, also the internal motion of quantum mechanical systems, whether it is rotational, vibrational or electronic, is determined via superposition states. In ultrafast science the observation and resolution of such dynamics and, hence, the observation of atoms or molecules in superposition states has always played a central role. Currently, it is the superposition of atomic or molecular electronic states and the related attosecond electron dynamics that is the focus of studies in the field \cite{goulielmakis_real-time_2010,Mauritsson2010,holler2011,xie2012}. Perhaps the simplest case of such dynamics is a helium atom in a superposition of $1s$ and $2p_1$ state which results in a wavepacket rotating in a plane around the nucleus with a period of $\sim200$ attoseconds. The dynamics in such quantum systems in superposition states can be probed via ionization with an ultrashort laser pulse. Unlike for the ionization of a quantum system prepared in a single state, e.g. the ground state, conventional anisotropy and asymmetry parameters fail to provide comprehensive tools for the analysis of photoionization from atomic superposition states. For example, the simplest case of a competition between one- and two-photon ionization processes can be analyzed using asymmetry parameters if the atom is prepared in the ground state \cite{PhysRevLett.108.033003,ma_photoelectron_2013,grum-grzhimailo_interfering_2015,douguet_photoelectron_2016,hofbrucker_maximum_2018,boll_angularly_2019,wang_time-dependent_2019,venzke_ionization_2020}. In contrast, these analysis tools are either not applicable or do not provide a straightforward interpretation for the same processes if the atom is in the superposition of two states. Thus, an extension of the toolbox for the characterization of the states and the identification of competing pathways is desirable. In this paper, we propose a new set of generalized asymmetry parameters which are sensitive to interference effects in the photoionization of atomic systems in superposition states. As we will show these new parameters can be used to identify the interplay of competing linear and nonlinear pathways at low and high intensities, as well as at ultrashort pulse durations. The application and relevance of the parameters is tested using state-of-the-art numerical solutions of the time-dependent Schr\"odinger equation. Our method provides a new approach to the analysis of experiments dedicated to resolving attosecond electron dynamics.
+
+\section*{Generalized asymmetry parameters}
+
+\begin{figure}[t]
+\begin{center}
+    \includegraphics[width=0.9\linewidth]{figs/Photo_ionization/GAP/combine_fig_1.pdf}
+\end{center}
+\caption{
+(a-c): Ionization pathways effective in different intensity and pulse length regimes. (d) Photoelectron angular distributions for ionization of neon atom, prepared in $2p_{-1}-3d_2$ superposition, as function of intensity and pulse length. (e) The same as (d) including additionally ionization from the $2p_0$ and $2p_1$ states.
+} 
+  \label{fig:scheme}
+\end{figure}
+
+We consider a prototypical example in ultrafast science and, more general, in atomic physics, which is schematically shown in Fig.~\ref{fig:scheme}. 
+An atom in a superposition of two quantum states with different magnetic quantum numbers $m$, say the ground (g) and an excited (e) state is probed via ionization by an ultrashort linearly polarized laser pulse. The photoelectron emission is induced by a pulse with central frequency $\omega$ tuned to the energy gap of the two states. The broad energy spectrum of an ultrashort Gaussian pulse is schematically depicted in the panels of Fig.~\ref{fig:scheme} centered about the energy of the excited state. There are three competing pathways leading to photoelectron emission with energy $2\omega - |E_g|$, where $E_g$ is the ground state energy of the atom: (a) absorption of one photon at $\omega$ from the
+excited state, (b) absorption of two photons with sum frequency $2\omega$ from the 
+ground state and (c) absorption of one photon at $2\omega$ from the ground state. While the ionization from the excited state (a) is the dominant pathway at low peak intensities and long pulse duration, the transitions from the ground state will interfere at higher peak intensities (two-photon process, (b)) and if the bandwidth of the pulse is broad enough (i.e., the pulse duration is sufficiently short, (c)). 
+The exemplary results obtained from the solutions of the time-dependent Schr\"odinger equation in Fig.\ \ref{fig:scheme} for the interaction of
+neon atom, prepared in the superposition of $2p_{-1}$- and $3d_2$-states (d) or prepared in the same superposition but including additionally ionization from the $2p_0$ and $2p_1$ ground states (e), with a linearly polarized laser pulse show that the photoelectron angular distributions (PADs) vary significantly as function of pulse duration and peak intensity. 
+The forward-backward asymmetry, often used in the past, cannot be applied to
+identify the impact of the different pathways in these PADs. Therefore, a new set of asymmetry parameters is needed for photoionization from superposition states with ultrashort laser pulses.
+
+\subsection*{Definition}
+
+We start by expanding the PAD as a coherent sum of spherical harmonics, assuming 
+the atom is ionized by a linearly polarized pulse aligned along the $z$-axis as
+\begin{equation}
+    P(\theta,\phi) = \left|\sum_\ell C_{\ell}^{m_g} Y_\ell^{m_g}(\theta,\phi)+C_{\ell}^{m_e} Y_\ell^{m_e}(\theta,\phi)\right|^2
+\end{equation}
+where $m_g$ ($m_e$) are the magnetic quantum numbers of the ground (excited) state in the superposition, $C_\ell^m$ is the complex amplitude and $Y_\ell^m(\theta,\phi)$ is the spherical harmonic. The asymmetry in the PADs due to the interference between different channels is related to the relative phase and amplitude of the spherical harmonics. For each spherical harmonic, the sign of the phase is symmetric (asymmetric) across the $xy$-plane when $\ell+m$ is even (odd), while
+in the $xy$-plane 
+the phase is proportional to $e^{im\phi}$. 
+
+In the $xy$-plane there are regions of destructive and constructive interference between the transition amplitudes from the ground and excited state, as illustrated on the left of Fig.~\ref{fig:integrals}. The regions can be labeled by
+\begin{equation}
+    c_i = \floor*{\frac{(\phi-\phi_0)\Delta m}{\pi}}
+\end{equation}
+where $\floor{}$ is the floor function, $\phi_0$ is a reference angle, and $\Delta m=|m_g-m_e|$ ($\Delta m = 3$ in Fig.~\ref{fig:integrals}, \cite{footnote}). Setting $\phi_0$ at an angle where the interference switches from constructive to destructive, regions of destructive interference signal are labeled by even $c_i$ while odd $c_i$ denote regions of constructive interference. 
+Next we define the following integrals:
+\begin{align}
+    I^{even}_{\pm} &= \sum_{even \; c_i} \int P(\theta,\phi)\; d\Omega_{c_i}^{\pm}\\
+    I^{odd}_{\pm} &= \sum_{odd \; c_i} \int P(\theta,\phi)\; d\Omega_{c_i}^{\pm}
+\end{align}
+where $d\Omega_{c_i}$ is the solid angle for the region $c_i$ in the positive ($z>0$) or negative ($z<0$) hemisphere with respect to the $xy$-plane. In the example in Fig.~\ref{fig:integrals} (left) each integral represents the total photoelectron signal in the regions of a specific color (dark blue, light blue, dark red, light red). We now define general asymmetry parameters (GAPs) that account for the relative difference in the regions of constructive and destructive interference: 
+\begin{equation}
+\label{gaps}
+    A_{p}^{\Delta m} \equiv \begin{cases} 
+      \left|\frac{(I^{even}_+ + I^{even}_-) - (I^{odd}_++I^{odd}_-)}{I^{even}_++I^{even}_- + I^{odd}_++I^{odd}_-}\right|_{max(\phi_0)} & \text{even} \;  \gamma  \\ 
+      \\
+      \left|\frac{(I^{even}_++I^{odd}_-) - (I^{odd}_++I^{even}_-)}{I^{even}_++I^{even}_- + I^{odd}_++I^{odd}_-}\right|_{max(\phi_0)} & \text{odd} \;  \gamma 
+  \end{cases}
+\end{equation}
+where $\gamma = \ell_e + m_e + \ell_g + m_g + N_p$ with $\ell_g$ ($\ell_e$) are the quantum numbers of the ground (excited) state in the superposition, and $p=(\gamma \text{ mod } 2)$ is the parity of $\gamma$. Each parameter $A_{p}^{\Delta m}$ is related to a certain total number of absorbed photons, $N_p = N_{g}+N_{e}$, where $N_g$ ($N_e$) is the number of photons absorbed in the transition from the ground (excited) state. 
+We note that GAPs cannot only be defined for ionization of superposition states with a linearly polarized laser pulse along the $z$-axis, but the definition can be extended, for example, to ionization with a circularly polarized ionizing laser pulse in the $xy$-plane. In that case $\gamma=\ell_e + m_e + \ell_g + m_g$, the number of photons is not included as both $\ell$ and $m$ change by 1 for each photon absorbed. Using $\Delta m = |(m_g \pm N_{pg}) - (m_e \pm N_{pe})|$  for right (+) and left (-) handed circular polarized probe pulses, processes with different number of photons involved can be studied by analyzing the signals with different $\Delta m$. Here, in the further discussion and applications we however focus on the case of a linearly polarized probe pulse.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figs/Photo_ionization/GAP/integral_combined.pdf}
+\caption{
+Conceptual illustration of GAPs (for $\Delta m=3$). Left: Integrals $I_\pm^{even/odd}$, Eqs.~(3,4), are defined over regions of constructive and destructive inferference, indicated by different colors (dark blue, light blue, dark red, light red), in $xy$-plane.
+Middle: GAPs are constructed based on the parity of the parameter $\gamma = l_e+m_e+l_g+m_g+N_p$ from the integrals over the regions denoted by a certain color (light blue, dark red). 
+Right: Examplary PADs displaying the asymmetry captured by the parameters for even and odd $\gamma$.
+} 
+  \label{fig:integrals}
+\end{figure}
+
+To exemplify the significance of the asymmetry parameters we consider the ionization of Ne atom, initially prepared in the $2p_{-1}-3d_2$ superposition (i.e., $\ell_g = 1$, $m_g = -1$, $\ell_e = 2$, $m_e = 2$; and, hence, $l_g + m_g + l_e + m_e = 4$), by an ultrashort intense laser pulse. As discussed at the outset, we expect interferences between two kind of pathways depending on the peak intensity and the pulse duration. 
+For an ultrashort pulse at low intensities one-photon transitions from the ground (Fig.\ \ref{fig:scheme}(c), $N_g = 1$) and the excited states (Fig.\ \ref{fig:scheme}(a), $N_e = 1$) will interfere, with $N_p = N_g + N_e = 2$, $\gamma = 6$ and $p=0$. An examplary PAD, obtained via numerical TDSE solution in the relevant intensity and pulse duration regimes, is shown at the top of the right column in Fig.~\ref{fig:integrals}. For even $\gamma$ the corresponding parameter $A_0^3$ relates to the difference between the total photoelectron signals in the dark red and light blue shaded regions, as depicted at the top of the middle column of Fig.~\ref{fig:integrals}. Comparison with the PAD shows that this difference indeed accounts for the asymmetry in the PAD induced by the interference of the transition amplitudes for the one-photon processes from the ground and the excited states. In contrast, due to the dependence of multiphoton transition amplitudes on the intensity of the pulse at longer pulse duration and higher intensities it is expected that the one-photon transition from the excited state (Fig. \ref{fig:scheme}(a), $N_e = 1$) interferes with the two-photon absorption from the ground state (Fig.\ \ref{fig:scheme}(b), $N_g = 2$), giving rise to $N_p = 3$, $\gamma = 7$ and $p=1$ for ionization of Ne($2p_{-1}-3d_2$). The regions relevant in the calculation of the asymmetry parameter $A_1^3$ and the corresponding exemplary PAD for the Ne atom are presented in the bottom row of Fig.~\ref{fig:integrals}. The comparison indicates the significance of the asymmetry parameter $A_1^3$ for the detection of the interference at high intensities.
+
+\subsection*{Application via numerical simulations}
+
+For the application of the GAPs we have considered certain superpositions of two atomic states which are first prepared by a pump pulse and then probed by a linearly polarized pulse at a set time delay such that the relative phase between the two states is determined. In the calculations we have therefore simulated the interaction with the probe pulse only by
+using numerical solutions of the time-dependent Schr\"odinger equation (TDSE) for the interaction of a electron in a single-active-electron (SAE) potential with the electric field $\mathbf{E}$ of a linearly polarized laser pulse (aligned along the quantization ${\hat z}$-axis) in dipole approximation and length gauge (we use Hartree atomic units $e = m_e = \hslash =1$): 
+\begin{equation}
+i\frac{\partial}{\partial t}\Psi(\mathbf{r},t) = \left[-\frac{\nabla^2}{2} - \mathbf{E}(t) \cdot \mathbf{z} + V(r)\right]\Psi(\mathbf{r},t).
+\end{equation}
+To ensure that the electric field integrates to zero \cite{chelkowski_sensitivity_2002}, we set the vector potential as:
+\begin{eqnarray}
+A_z(t) &=& 
+      A_0 \exp\left(-\ln(2)\left(\frac{2(t-\tau_0)}{T}\right)^2\right)
+      \nonumber
+      \\
+      && \times \sin\left(\omega_A(t-\tau_0) + \varphi \right)
+      \label{eq:vectorp}
+\end{eqnarray}
+with $A_0 = \frac{c\sqrt{I_0}}{\omega_A}$, $T = \frac{2\pi N}{\omega_A}$, $c$ is the speed of light, $I_0$ the peak intensity, $N$ the number of cycles in the pulse, $\varphi$ is the carrier-to-envelope phase (CEP) and $\omega_A$ denotes the central frequency of the vector potential which has been frequency corrected \cite{venzke_central_2018} to produce an electric field with a central frequency $\omega$.  The present calculations are performed utilizing single active electron potentials for He atom and Ne atom \cite{reiff_single-active_2020} with the electron initially prepared in a superposition of the ground and an excited state. The TDSE has been solved by expanding the wavefunction in spherical harmonics (up to $\ell_{max} = 50$ for all relevant $m$ values), as described in \cite{venzke_ionization_2020}. The computations have been performed on a radial grid of 300 a.u.\ with a grid spacing of 0.05 a.u.\, using exterior complex scaling on the outer 15 a.u.\ of the grid. A time step of 0.05 a.u.\ has been used.
+
+\section*{Results and discussion}
+
+For our applications we have considered individual superposition states in neon (Fig.~\ref{fig:Neon-1-photon}) and realistic superposition states considering all possible initial $m_g$ states of neon and helium atoms (Fig.~\ref{fig:combined_data}). The central frequency of the applied electric field was set to the energy difference of the initially populated field-free states ($\omega_0=|E_g-E_e|$). To analyze the relevance of both the short-pulse parameter $A_0^{\Delta m}$ and the high-intensity parameter $A_1^{\Delta m}$ calculations have been performed for one- and four-cycle probe pulses (FWHM pulse durations) as function of the peak intensity of the pulse. At the end of each simulation of the time-dependent Schr\"odinger equation we obtained the photoelectron angular distribution at a given momentum $k$ (corresponding to a photoelectron energy of $E=2\omega-|E_g|$) by projecting the wavefunction onto the field-free continuum states on the numerical grid. The asymmetry parameters $A_0^{\Delta m}$ and $A_1^{\Delta m}$ are then determined from the numerical PADs using Eq.~(\ref{gaps}).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.32\linewidth]{figs/Photo_ionization/GAP/Ne_2p-1_3d0.eps}
+\includegraphics[width=0.32\linewidth]{figs/Photo_ionization/GAP/Ne_2p0_3d1.eps}
+\includegraphics[width=0.32\linewidth]{figs/Photo_ionization/GAP/Ne_2p1_3d2.eps}\\
+\includegraphics[width=0.32\linewidth]{figs/Photo_ionization/GAP/Ne_2p-1_3d0_real.eps}
+\includegraphics[width=0.32\linewidth]{figs/Photo_ionization/GAP/Ne_2p0_3d1_real.eps}
+\includegraphics[width=0.32\linewidth]{figs/Photo_ionization/GAP/Ne_2p1_3d2_real.eps}
+\caption{
+Generalized asymmetry parameters $A_0^1$ (solid lines) and $A_1^1$ (dashed lines) as function of intensity for ionization of  superpositions of $2p_{-1}-3d_0$ (a), $2p_{0}-3d_1$ (b), and $2p_{1}-3d_2$ (c) in neon atom with initial populatations of 0.5 for each state (top row). Results in bottom row for superpositions with populations of $P_{2p_{-1}}=0.98,P_{3d_0}=0.02,P_{4s_0}=0.00057$ (d), $P_{2p_{0}}=0.94,P_{3d_1}=0.06$ (e), and $P_{2p_{1}}=0.88,P_{3d_2}=0.12$ (f). Results have been obtained for one-cycle (blue lines) and four-cycle (orange lines) pulses at photoelectron energy $E = 2\omega-I_p$.
+} 
+  \label{fig:Neon-1-photon}
+\end{figure}
+
+To exemplify the application and provide basic insights in the relevance of the GAPs, we have first considered superpositions of individual sublevels in different shells of the neon atom as initial state. Fig.~\ref{fig:Neon-1-photon} shows results for the GAPs as a function of peak intensity for interaction of a neon atom, prepared in $(2p_{-1}-3d_0)$ (a,d), $(2p_{0}-3d_1)$ (b,e),  and $(2p_{1}-3d_2)$ (c,f) superpositions. For the results in the top row equal population in the two initial states has been considered, while for those in the bottom row populations, as produced via one-photon excitation by a 50 cycle, $10^{13}$ W/cm$^2$ right handed circulary polarized pump pulse, are used for the initial state  
+(states with populations larger than $10^{-5}$ are considered, see figure caption for values). The central frequency of the ionizing probe laser pulse is tuned to the energy gap between the field-free ground and excited states. 
+
+Overall, except for the results in panel (a) which we will discuss below separately, the short-pulse parameter $A_0^1$ (solid lines) is large at low intensities and for the shorter of the two pulse durations. This is expected from our discussion above and confirms that the parameter is an indicator for the interference of the one-photon signal from the ground state and the one-photon signal from the excited state. Since both of these signals
+are 
+first order in intensity, their relative strengths and, hence, the $A_0^1$ parameter are independent of intensity at low intensities for a given initial superposition state. As the intensity increases, the relative amplitude of the two-photon ionization channel increases and finally dominates over the one-photon channel from the ground state. This trend is reflected in both the short-pulse and the high-intensity parameters. The increase in $A_1^1$, resulting from the interference between the one-photon excited state signal and the two-photon ground state signal, shows in which intensity regime the two-photon signal starts to overtake the short pulse signal. Simultaneously with the increase of $A_1^1$ we observe a decrease of the $A_0^1$ signal, in agreement with our physical interpretation of the relevance of the different pathways. Parenthetically, we note the onset of an increase of the $A_0^1$ parameter at high peak intensities is likely due to pathways involving higher order processes with an even number of total photons.
+
+While the general trends of the two parameters are similar in most of the cases, there is one exception where the details differ significantly. In the case of the $(2p_{-1}-3d_0)/\sqrt{2}$ superposition (panel a), $A_0^1$ shows a different trend. It remains constant at low intensities before increasing at higher intensities. As the laser pulse and relative populations are fixed in the top row (a-c) of Fig.~\ref{fig:Neon-1-photon}, the change in amplitude and shape of $A_0^1$ and $A_1^1$ are caused by changes in the cross-sections of the various states. We, therefore, attribute the different trend in the $A_0^1$ signal in panel (a) to be due to the dominance of the one-photon transition from the $3d_0$ state at all intensities, since $m=0$ states are, in general, easier to ionize with a linearly polarized pulse than those with $|m| > 0$. This interpretation is further supported by the results in Fig.~\ref{fig:Neon-1-photon}(d) for a superposition with much lower initial population in the $3d_0$-state. Despite the difference in magnitude of transition amplitudes, now the interference between the one-photon pathways is effective and the general expected trend for the short-pulse parameter $A_0^1$ is present.
+
+Comparison of the results in the two rows of Fig.~\ref{fig:Neon-1-photon} shows that the intensity at which the transitions in the parameters occur depends on the population in the two states in the initial superposition.
+Since in the bottom row the populations in the excited states are low, the relative magnitudes of the corresponding one-photon transition amplitudes from the excited states as compared to those from the ground state levels are weaker than for the equally populated superpositions (top row). Therefore, we observe the impact of the two-photon pathway from the ground state at lower intensities in the results in the bottom row. Additionally, the $A_1^1$ signal becomes sensitive to changes in pulse length due to the weak signal from the excited state. Thus, the GAPs may also be useful to detect the population ratio in the superposition states. Here, we do not further analyze this feature, but focus on the more general application of the parameters to identify the presence of different ionization pathways.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.32\linewidth]{figs/Photo_ionization/GAP/He_2p1.eps}
+\includegraphics[width=0.32\linewidth]{figs/Photo_ionization/GAP/Ne_2p-1_3d2_3p-combined.eps}
+\includegraphics[width=0.32\linewidth]{figs/Photo_ionization/GAP/Ne_2p-1_3d0_1p-combined.eps}
+\caption{
+Same as Fig.~\ref{fig:Neon-1-photon} but for
+superpositions generated by a right-handed circularly polarized pulse
+via one-photon transition in helium atom (a),  
+three-photon transition in neon atom (b), and 
+one-photon transition in neon atom (c) (for details see text).
+} 
+  \label{fig:combined_data}
+\end{figure}
+
+So far, in Fig.~\ref{fig:Neon-1-photon} we considered simple albeit somehow artificial superposition states restricted to certain sublevels of two shells in the neon atom. Now, we extend our analysis to three different initial states as they can be generated with right-handed circularly polarized pump laser pulses: (a) one-photon excitation of helium atom to the $2p_1$ state leading to $(1s-2p_1)/\sqrt{2}$ superposition, (b) three-photon excitation of neon atom to the $3d$  shell, leading to an initial state consisting of a superposition with equal population in $2p_{-1}$ and $3d_2$ along with populated $2p_0$, and $2p_1$ states (note, that the latter two $2p$ states cannot be excited by the absorption of three right-handed circularly polarized photons to the $3d$ shell), and (c) one-photon excitation of neon atom to the $3d$ shell leading to the combination of the three superposition states analyzed separately in the bottom row of Fig.~\ref{fig:Neon-1-photon}.
+In Fig.~\ref{fig:combined_data}, we present results for the GAPs of the corresponding calculations.
+The initial superpositions in case of the helium data (a) and the neon data in panel (b) consist of just one state in the excited shell and show the same general trends as those in the majority of the panels of  Fig.~\ref{fig:Neon-1-photon} with the decrease of $A_0^{\Delta m}$ along with the increase of $A_1^{\Delta m}$ occurring in a certain  intensity regime. The transitions in helium occur at a higher peak intensity due to the more tightly bound helium ground state, which is harder to ionize.  
+The overall trends of the results in Fig.~\ref{fig:combined_data}(c) for the more complex initial superposition, consisting of six states in the $2p$- and the $3d$-shell of neon.
+The one-cycle pulse data are similar to those discussed before, providing the same information about the impact of the two-photon transition from the ground state. However, the $A_1^1$ parameter, particularly at the longer pulse duration, shows an additional interference structure in the transition regime. It is likely that this is due
+to an interference between transitions originating from two excited states differing by $\Delta m = 1$, here between one-photon ionization signals
+from $3d_0$ and $3d_1$ as well as from $3d_1$ and $3d_2$. Although the number of absorbed photons in these transition is not 3, the resulting $\gamma$ has the same parity as the signal from a $2p_m-3d_{m+1}$ state.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=.45\linewidth]{figs/Photo_ionization/GAP/He_2p1_detune_1p2.eps}
+\caption{ 
+Asymmetry parameter $A_1^1$ for ionization of helium atom ($1s$-$2p_1$) with one- and four-cycle pulses at central frequency 
+$\omega=1.2\omega_0$.
+} 
+  \label{fig:detuned}
+\end{figure}
+
+The high-intensity asymmetry parameter $A_1^{\Delta m}$ is not only indicative of the general features concerning the interferences between the pathways discussed above, but also provides insights in more subtle aspects. In the top row of Fig.~\ref{fig:Neon-1-photon} the maximum of the asymmetry parameter $A_1^{\Delta m}$ occurs at the same intensity independent of the pulse duration. This is due to the fact that in the calculations the central frequency was set to the energy difference of the initially populated states. In this case the center of the photoelectron energy distributions due to the one-photon ionization from the excited state and the two-photon transition from the ground state nearly coincide\cite{crosssec}. If the frequency is detuned from the resonance, the position of maximum interference strongly depends on the pulse duration. Due to the larger spectral width of the pulse at shorter pulse duration, the interference between the channels becomes most effective at higher intensities than the longer pulse duration results, at which the photoelectron distributions from the two channels have less overlap. This effect is seen in the results in Fig.\ \ref{fig:detuned} for photoionization at a central frequency of 1.2 times the energy difference between the $1s$- and $2p_1$-states in helium atom. 
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=.45\linewidth]{figs/Photo_ionization/GAP/He_2p1_asym_alpha.eps}
+\caption{
+Asymmetry parameter $A_0^1$ for ionization of helium atom ($1s$-$2p_1$) with one-cycle pulses at central frequency $\omega_0$. Results of averages over different Gaussian distributions of CEP with width $\alpha$ are compared with those at fixed CEP ($\alpha =0$, solid line).
+} 
+  \label{fig:cep_avg}
+\end{figure}
+
+Finally, it is important to consider variations in the laser parameters relevant for an application of the generalized asymmetry parameters in an experiment. Typically, the peak intensity of the applied laser pulse may vary from shot to shot as well as over the interaction volume. The results in Fig.\ \ref{fig:Neon-1-photon} and Fig.\ \ref{fig:combined_data} show that the two GAPs vary rather slowly as a function of peak intensity. Thus, we can expect that variations in intensity in an experiment will not impact the results significantly. Another parameter that is usually difficult to control is the CEP of a laser pulse, which typically may become most important for ultrashort pulses. In the present study the high-intensity $A_1^{1}$ parameter is independent of variations in CEP. To study the dependence on the CEP for the short-pulse low-intensity asymmetry parameter $A_0^{1}$ we have obtained results as a function of the CEP and averaged the results about a given value $\varphi_0$ using a Gaussian distribution of width $\alpha$ (in units of $2\pi$) as: 
+%
+\begin{equation}
+A_{p}^{\Delta m}(I, T; \alpha)
+= 
+\frac{\sum_i \exp\left[-\frac{1}{2}\left(\frac{|\varphi_i-\varphi_0|}{2\pi\alpha}\right)\right] \sigma(\varphi_i) A_{p}^{\Delta m}(\varphi_i,I,T) }
+{\sum_i\exp\left[-\frac{1}{2}\left(\frac{|\varphi_i-\varphi_0|}{2\pi\alpha}\right)\right]\sigma(\varphi_i)}\; ,
+    \label{eq:PAD_gauss_window}
+\end{equation}
+%
+where $\sigma(\varphi_i)$ is the total ionization probability at CEP $\varphi_i$. 
+In the calculations we have assumed that the pump pulse (for the preparation of the initial state) has the same CEP as the probe pulse.
+The comparison of the results for different averages in Fig.\ \ref{fig:cep_avg} with the results for fixed CEP (solid line) shows that for He atom the short-pulse asymmetry parameter $A_0^1$ is indicative for the interference up to fluctuations of about $\pi/2$ in the CEP. 
+
+
+\section*{Summary}
+
+%The Discussion should be succinct and must not contain subheadings.
+
+In summary, we have introduced a set of generalized asymmetry parameters (GAPs) which characterize the interference of linear and nonlinear pathways to ionization of atoms, prepared in superposition states, due to the interaction with a linearly polarized intense ultrashort laser pulse. These parameters may provide a new tool to analyze data in attosecond experiments. The relevance of the parameters is demonstrated via the results of numerical simulations of ionization of helium and neon atom. The impact of short pulse and nonlinear effects, as they arise in experiments with free-electron lasers and high-order harmonic generation, is shown. The dependence on the central frequency of the applied laser pulse and the impact of variations of laser parameters, such as the peak intensity and the carrier-to-envelope phase, are analyzed and discussed.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Wavefunction reconstruction method} % (fold)
+\label{sec:wavefunction_reconstruction}
+The availability of attosecond light sources at wavelengths from the vacuum ultraviolet (VUV) and extreme ultraviolet (EUV) to the soft X-ray regime via the technologies of free electron lasers (FEL) \cite{seddon_short-wavelength_2017} and high-order harmonic generation (HHG) \cite{popmintchev_attosecond_2010,chini_generation_2014} has opened a new regime of ultrafast measurements in atomic and molecular physics. Laser pulses of duration as short as a few tens of attoseconds have been demonstrated experimentally \cite{zhao_attosecond_2012,chen_generation_2014} and enabled the observation of electron dynamics (for recent reviews, see \cite{vrakking_attosecond_2014,Pazourek2015,calegari_advances_2016,ramasesha_real-time_2016,young_roadmap_2018,peng_attosecond_2019}). One example is the time-resolved measurement of the photoelectric effect in atoms and solids \cite{cavalieri_attosecond_2007,schultze_delay_2010,klunder2011,tao_direct_2016,isinger_photoionization_2017}. Electron emission from the target has been also temporally resolved for a transition of the electron into the continuum through excited state resonances \cite{su2015,Sabbar2015,Gong2017}, autoionizing states \cite{jimenez2014,Dolmatov2015,Barreau2019}, Fano resonances \cite{kaldun_observing_2016,kotur_spectral_2016,gruson_attosecond_2016,cirelli_anisotropic_2018} and for correlated electron emission \cite{pfeiffer_timing_2011,Pazourek2012,mansson_double_2014}. Electron wavepacket dynamics in superposition states of atoms and molecules has been another focus of attosecond time-resolved studies, either for single valence electron motion \cite{goulielmakis_real-time_2010,Mauritsson2010,holler2011,hockett_time-resolved_2011,Kim2012,xie2012,klunder2013,beck_attosecond_2014,hassan_optical_2016,walt_dynamics_2017,priebe_attosecond_2017,He2018} or correlated two-electron dynamics \cite{hu2006,feist2011,ott_reconstruction_2014}.
+
+Recently, the application range of attosecond laser pulse technology has been extended by the capability to control the polarization of the emitted light in high-order harmonic generation and free electron lasers. The physical principle to produce circularly polarized high-order harmonics has been proposed and applied first two decades ago \cite{eichmann95} while efficient phase matching in the EUV and soft X-ray regime \cite{fleischer_spin_2014,fan_bright_2015,hickstein_non-collinear_2015} and the control of the polarization stage \cite{huang_polarization_2018} has been demonstrated more recently. Similarly, free electron laser light with variable polarization has become available \cite{spezzani2011,mazza_determining_2014}. The potential to control the polarization and helicity of light generated by HHG and FELs extends the range of accessible states and transition pathways during photon absorption. States with varying orbital angular momentum and magnetic quantum number can be excited during the interaction with the pulses. In turn, the helicity of the light pulses can be used to selectively prepare superpositions of states in atoms or molecules with a variety of combinations in the quantum numbers (principal, orbital angular momentum, magnetic) on an ultrafast time scale. 
+
+One of the simplest cases of a superposition of atomic states with different orbital angular momentum and magnetic quantum numbers is that of a helium atom in the $1s$ and $2p_1$ states. It results in an ultrafast electron dynamics given by a wavepacket rotating in a plane around the nucleus with a period of $\sim200$ attoseconds. We study this dynamics via ionization with an ultrashort linearly polarized laser pulse as a function of time delay from the instant of preparation of the atomic superposition state. Furthermore, we analyze how the photoelectron angular distributions can be used to reconstruct the initial electronic wave packet. The concept is based on the idea to utilize quantum beating signals, where the imaged wave packet is interfered with a reference wave, to reconstruct a wave function \cite{paul_observation_2001,muller_reconstruction_2002,Mauritsson2010,klunder2013,priebe_attosecond_2017,jiang_theory_2020}. Accounting for the phase accumulation, ionization cross sections, and characterization of the reference wave packet that is used in the measurement is a non-trivial task. In this work we present a method for circular wave packet reconstruction on the attosecond time scale that utilizes perturbation theory. Additionally, we perform a sensitivity study to show the impacts of noise produced in an experiment and the limits in peak laser intensity on the reconstruction method. Finally, we consider the extension of the method to the imaging of wave packets consisting of superpositions of more than two states.
+
+The rest of the paper is organized as follows: In section \ref{sec:theory} we first present and discuss the ionization scheme on which the reconstruction method is based. Then we briefly review the methods for the numerical solution of the time-dependent Schr\"odinger equation and the perturbation theory formalism used for the reconstruction algorithm. In section \ref{sec:results} we present the application of the method to the reconstruction of a circular wavepacket in helium atom. Aspects of the error analysis with respect to the accuracy of the observation of the PADs and the variation of the laser parameters will be presented. Furthermore, the impact of different pathways on the reconstruction process will be studied. Finally, we briefly discuss the extension of the method to superpositions of more than two states along with results for a specific three-state superposition. The paper ends with a brief summary. We use Hartree atomic units $e = m_e = \hbar =1$ if not mentioned otherwise.
+
+
+\begin{figure}[t]
+\centering
+% \includegraphics[width=1.0\linewidth]{Venzke_fig_1.eps}
+\caption{(a) Isosurfaces of the $1s-2p_1$ wave function ($|r\Psi|^2$ is shown) evolving in time. (b) Ionization scheme in the $x-y$ plane. The laser polarization along the $x$-axis is depicted in red, the direction of the ionized electron is shown in orange, and the charge migration is shown in yellow. Selection rules for ground state signal (c) and excited state signal (d). The solid lines illustrate the transitions of photons absorbed at the central frequency and the dashed lines show the pathways for short pulse effect due to the large bandwidth of an ultrashort pulse.
+} 
+  \label{fig:dynamic_visualization}
+\end{figure}
+
+As prototypical example we consider a helium atom in a $1s-2p_1$ superposition, which represents a circular wave packet rotating around the nucleus. Fig.~\ref{fig:dynamic_visualization}(a) shows the dynamics via isosurfaces of the wave function (i.e., $\left|r\Psi\right|^2$) rotating in the $x-y$ plane on an attosecond time scale. To characterize the motion, and in turn reconstruct the wave function, we expand the initial wave function in the eigenbasis of stationary states and write the wave function at some time $t$ as: 
+%
+\begin{equation}
+    \Psi({\bm r},t) = a_0 \psi_0({\bm r},t) + \sum_{j=1}^{N-1} a_j e^{i\theta_j} \psi_j({\bm r},t)
+    \label{eq:expansion}
+\end{equation}
+%
+where $a_j$ is a positive real number, $\theta_j $ is a relative phase, and $\{ \psi_j = \Psi_{nlm}; j = 0, \ldots, N-1\}$ is the eigenstate basis. While the basis may contain an infinite number of eigenstates, for practical means in the numerical calculations and any application it has to be truncated at some finite number $N$. Thus, the wave function depends on $N-1$ phases and $N$ amplitudes since the global phase is not a physically relevant quantity. In this framework, all time dependence is contained in the states $\ket{\psi_j(t)}$ and the initial wavefunction is completely reconstructed if all $a_j$ and $\theta_j$ for $j\geq 1$ are obtained since $a_0$ is fixed by the normalization and we set the phase of ground state $\ket{\psi_0}$ to zero.
+
+In the reconstruction scheme that we consider the electron dynamics is probed via ionization by an intense ultrashort laser pulse as a function of time delay from the instant of preparation of the atomic superposition states. In the scheme predictions of first- and second-order perturbation theory (PT) are used to determine the unknown phases and amplitudes from the photoelectron angular distributions (PADs). The latter may be determined in an experiment but in this theoretical study we utilize ab-initio numerical calculations. For the case of a helium atom in a $1s-2p_1$ superposition, we apply a probe laser pulse linearly polarized along the $x$-axis and detect the photoelectron angular distribution in the $x-y$ plane as a function of the angle $\varphi$ from the $x$-axis as shown in Fig.~\ref{fig:dynamic_visualization}(b). The absorption of a photon will induce transitions with $\ell \rightarrow \ell \pm 1$ and $m \rightarrow m \pm 1$ due to the selection rules. The pathways from the ground (c) and the excited state (d) are shown in Fig.\ \ref{fig:dynamic_visualization}. The solid arrows represent the pathways for the transitions at the central frequency of the probe pulse. $I_p$ is the ionization potential and the ovals indicate possible resonances. Since we analyze photolelectron emission induced by ultrashort pulses, we need to consider additional pathways due to the broad bandwidth of the pulse \cite{venzke_ionization_2020}. These pathways are the ionization from the ground state with a single photon and the two-photon transition from the excited state, which are represented by the dotted arrows in Fig.~\ref{fig:dynamic_visualization}. Since states in the continuum with the same energy and quantum numbers can be reached via different pathways, the photoelectron angular distribution will change in both shape and yield as the relative amplitudes and phases of each signal varies.
+
+
+In order to test the applicability and limits of the reconstruction method we use numerical solutions of the time-dependent Schr\"odinger equation (TDSE) as substitute for actual measurements of the photoelectron angular distributions. We consider the TDSE in length gauge and single-active electron approximation:
+%
+\begin{equation}
+i\frac{\partial}{\partial t}\Psi(\mathbf{r},t) = \left[-\frac{\nabla^2}{2} - \mathbf{E}(t) \cdot \mathbf{x} + V(r)\right]\Psi(\mathbf{r},t)\; ,
+\end{equation}
+%
+where $V(r)$ is a single-active electron potential for helium atom given by \cite{reiff_single-active_2020}:
+%
+\begin{equation}
+V(r) = -\frac{1}{r} - \frac{e^{-2.0329r}}{r} - 0.3953 e^{-6.1805r}.
+\end{equation}
+%
+giving a ground state energy of -0.944409 a.u. and a $2p$ energy of -0.12847 a.u.
+
+For the solution we have expanded $\Psi(\mathbf{r},t)$ in spherical harmonics up to $l_{max} = |m_{max}| = 20$ and discretized the radius using fourth order finite difference. The wavefunction has been propagated in time with a time step of 0.01 a.u., on a grid with spacing of 0.05 a.u., maximum radius of 300 a.u., and exterior complex scaling on the outer 30 a.u. of the grid utilizing the Crank-Nicolson method for time propagation. The numerical code has been tested against previously used codes as well as results from numerical calculations published in the literature \cite{Scrinzi2010}.
+
+To avoid unphysical effects in the numerical simulations we make sure that the electric field integrates to zero by setting the vector potential as \cite{chelkowski_sensitivity_2002}
+%
+\begin{equation}
+A(t) = \begin{cases} 
+      A_0 \sin^2\left(\frac{\pi t}{T}\right)\sin(w_A(t-\frac{T}{2}+\tau_d)): & 0\leq t \leq T \\
+      0: & \mbox{else} \\
+   \end{cases} 
+\end{equation}
+%
+where $A_0 = \frac{c\sqrt{I}}{\omega_A}$, $T = \frac{2\pi N}{\omega_A}$, $\tau_d$ is the pulse delay, $c$ is the speed of light, $I$ is the peak intensity, $N$ is the number of cycles in the pulse, and $\omega_A$ is the central frequency of the vector potential. $\omega_A$ is determined such that the spectral distribution of the $E$-field matches the given physical central frequency $\omega_E$ \cite{venzke_central_2018}. The $E$-field is obtained by
+%
+\begin{equation}
+    E(t) = -\frac{1}{c}\frac{\partial}{\partial t}A(t)\; .
+\end{equation}
+
+Once the wavefunction has been propagated to the end of the pulse we have obtained the photoelectron angular distribution  by projecting onto numerical continuum states. For an arbitrary radial potential $V(r)$ we propagate the radial Schrodinger equations for a given $\ell$ from $r=0$ to $r_{max}$. Boundary conditions and scattering phase shifts are accounted for via setting $\phi_{k,l}(r=0)=0$ and using the asymptotic solution to the Coulomb wave functions
+%
+\begin{equation}
+    \phi_{kl}(r\gg1) \rightarrow \sin\left[kr - \frac{l\pi}{2} +\frac{Z}{k} \ln(2kr) + \delta_{kl} \right].
+\end{equation}
+%
+To normalize the amplitude at $r = r_{max}$ we set
+%
+\begin{equation}
+    {\cal N} = \left[\frac{1}{\sqrt{|\phi_{kl}(r)|^2 + \left|\frac{\phi_{kl}'(r)}{(k+\frac{Z}{kr})}\right|^2}} \right]_{r=r_{max}}
+\end{equation}
+%
+and determine the phase shift $\delta_{kl}$ by
+%
+\begin{equation}
+    \delta_{kl} = \left[\arg\left(\frac{i\phi_{kl}(r) + \frac{\phi_{kl}'(r)}{(k+\frac{Z}{kr})} }{(2kr)^{iZ/k}}\right) - kr + \frac{l\pi}{2} \right]_{r=r_{max}}.
+\end{equation}
+%
+The photoelectron angular distribution is then obtained as
+%
+\begin{eqnarray}
+\lefteqn{P_{\text{TDSE}}(k,\theta,\phi) \propto}
+    \\
+    &&
+    \left|\sum_{l,m} Y_{l,m}(\theta,\phi)\int  e^{-i\delta_{kl}}(i)^l \phi_{kl}^*(r) \Psi({\bm r},t) dr \right|^2 \; .
+    \nonumber
+\end{eqnarray}
+
+
+The PT results are then used to obtain a residual 
+%
+\begin{align}
+   R(\mathbf{a}) &=
+   \sum_{k,\phi,\tau} \left|\frac{P_\text{TDSE}}{\sum\limits_{k,\phi,\tau}|P_\text{TDSE}|}-\frac{P_\text{PT}(\mathbf{a})}{\sum\limits_{k,\phi,\tau}|P_\text{PT}(\mathbf{a})|}\right|^2
+   \label{eqn:residual}
+\end{align}
+%
+where $P_\text{TDSE}$ and $P_\text{PT}$ are the TDSE and PT photoelectron distributions for all utilized final momenta, time delays, and detection angles. The state vector $\mathbf{a}$ that minimizes $R(\mathbf{a})$ gives the reconstructed wavefuction. The normalization maintains the relative yields at each final momentum.
+
+
+\begin{figure}[t]
+\centering
+% \includegraphics[width=0.49\linewidth]{Venzke_fig_2a.eps}
+% \includegraphics[width=0.49\linewidth]{Venzke_fig_2b.eps}\\
+% \includegraphics[width=0.49\linewidth]{Venzke_fig_2c.eps}
+% \includegraphics[width=0.49\linewidth]{Venzke_fig_2d.eps}\\
+% \includegraphics[width=0.49\linewidth]{Venzke_fig_2e.eps}
+% \includegraphics[width=0.49\linewidth]{Venzke_fig_2f.eps}\\
+\caption{
+Results of TDSE calculations for photoelectron angular distributions as a function of time delay for ionization of $1s - 2p_1$ superposition with ultrashort two-cycle (left column) and ten-cycle (right column) laser pulse with peak intensities of $10^{14}$ W/cm$^2$ (top row), $10^{12}$ W/cm$^2$ (middle row), and $10^{10}$ W/cm$^2$ (bottom row).
+} 
+  \label{fig:pad_vs_time}
+\end{figure}
+
+In Fig.~\ref{fig:pad_vs_time} we show how the photoelectron angular distribution varies as a function of time delay between the instant of preparation of the atomic superposition states and the center of the probe pulse. Comparison of the TDSE results for a two-cycle (left column) and a ten-cycle (right column) laser pulse at three peak intensities ranging from $10^{10}$ W/cm$^2$ (bottom row) over $10^{12}$ W/cm$^2$ (middle row) to $10^{14}$ (top row) W/cm$^2$ is shown. In these calculations the photon energy $\omega_E$ has been set to the energy difference between the initially equally populated field-free $1s$ and $2p_1$ states in helium atom ($(\ket{1s}+\ket{2p_1})/\sqrt{2}$). The angular distribution is taken at photoelectron energy $E = 2\omega_E - I_p$, where $\omega_E$ is the central photon energy and $I_p$ is the ionization energy.
+
+At the lowest intensity (Fig.~\ref{fig:pad_vs_time}, bottom row) we observe that the two-cycle signal varies significantly which is due to the interference between the one-photon ionization channels from the excited state and the ground state. The pathway from the ground state provides a significant contribution to the electron emission due to the broadband spectrum of the ultrashort two-cycle pulse \cite{venzke_ionization_2020,venzke_asymmetry}. Thus, as the time delay varies, the relative phase of the ground and excited states changes producing a quantum beating. In contrast for the longer ten-cycle pulse the spectrum of the pulse is more narrow. Consequently, the contribution from the one-photon pathway from the ground state is much smaller and, hence, the PAD for the ten-cycle pulse at the lowest intensity shows minimal variation as a function of time delay since it is dominated by the ionization of the excited state. 
+
+As the intensity is increased, the relative contribution of the two-photon ionization pathway from the ground state increases since the power dependence of the signals scales with the number of photons absorbed. Since this channel depends on the absorption of photons at the central energy the significance of the contribution does not depend on the pulse duration. As a result, we observe that at the largest intensity considered in Fig.~\ref{fig:pad_vs_time} (top row) that both the two- and the ten-cycle PADs vary strongly as function of the time delay, indicating the interference between the one-photon ionization from the excited state and the two-photon ionization from the ground state.
+
+\begin{figure}[t]
+\centering
+% \includegraphics[width=0.8\linewidth]{Venzke_fig_3a.eps}
+% \includegraphics[width=0.8\linewidth]{Venzke_fig_3b.eps}
+\caption{
+Errors in amplitude (solid lines with symbols) and phase (dashed lines with symbols) for two-state reconstruction using PADs generated with laser pulses at two, five and ten cycle pulse duration. In the insets the residual $R(\mathbf{a})$ is shown. The reconstruction is based on PADs at 20 time samples ($\Delta t=\tau/20$) using PADs in the full $x-y$ plane (a) and photoelectron signals in forward-backward direction (b).
+} 
+  \label{fig:resonant}
+\end{figure}
+
+To demonstrate the reconstruction method the errors in reconstructing the phase and amplitude of the superposition state $(\ket{1s}+\ket{2p_+})/\sqrt{2}$ in helium atom as a function of peak intensity are shown in Fig.~\ref{fig:resonant}. The reconstruction is based on PADs taken for 20 time delays over one period of quantum beating $\tau = 2\pi / |E_{2p_1}-E_{1s}|$. A comparison is shown between results in which either the full PAD in the $x-y$ plane via signals at 6,285 equally spaced angles (a) or only the signals in the forward-backward direction along the polarization axis of the probe pulse (b) is used. The phases and amplitudes have been determined by minimizing $R(\mathbf{a})$, Eq.\ (\ref{eqn:residual}). The final results for $R(\mathbf{a})$ as a function of peak intensity are shown in the insets of Fig.~\ref{fig:resonant}.
+
+The results in panel (a) show that if the full $x-y$ plane and 20 time samples are used, the reconstruction method reproduces the initial state up to peak laser intensities of about $10^{13}$ W/cm$^2$. The increase of the errors at intensities larger than $10^{13}$ W/cm$^2$ indicates that higher-order processes not described by the first- and second-order PT method begin to contribute leading to the breakdown of the present reconstruction method. For a two-state superposition just two amplitudes and the relative phase have to be determined. Using the full PAD with several thousand signals is oversampling for the reconstruction method. We therefore limit the signal used for the reconstruction to the forward-backward direction along the polarization direction. The corresponding reconstruction (b) does not change the results for the absolute error as function of intensity up to the breakdown at about $10^{13}$ W/cm$^2$.
+
+\begin{figure}[t]
+\centering
+% \includegraphics[width=0.8\linewidth]{Venzke_fig_4a.eps}
+% \includegraphics[width=0.8\linewidth]{Venzke_fig_4b.eps}
+\caption{Same as Fig.\ \ref{fig:resonant}(a) but neglecting (a) only the two-photon transition from the excited state and (b) both the one-photon transition from the ground state and the two-photon amplitude from the excited state in the reconstruction. 
+} 
+  \label{fig:pathways}
+\end{figure}
+
+The reconstruction depends on the effective interference of at least two amplitudes to have a quantum beating. In the full reconstruction we consider the contributions from four pathways (one- and two-photon transitions from ground and excited states). It is interesting to ask which pathways contributes effectively besides the one-photon transition from the excited state. To study this question, we have deliberately neglected individual amplitudes in the reconstruction. The results of these calculations are shown in Fig.\ \ref{fig:pathways} for the resconstruction based on the full $x-y$ plane and 20 time samples.
+
+For the results in Fig.~\ref{fig:pathways}a we utilized all amplitudes except the two-photon signal from the excited state. At intensities less than $10^{13}$ W/cm$^2$, the reconstruction matches the full data (Fig.~\ref{fig:resonant}(a)). At higher intensities, the two-cycle results deviate which agrees with the expectation that the two-photon signal from the excited state should have the largest impact at ultrashort pulse durations and high intensities. 
+
+Next, we have removed the one-photon signal from the ground state and the two-photon signal from the excited state from the reconstruction. The transition amplitudes are expected to be effective in broad bandwidth pulses or for ultrashort pulse durations. In agreement with this expectation the reconstruction errors in Fig.~\ref{fig:pathways}b match the full five- and ten-cycle data almost perfectly. The two-cycle data, however, deviates from the full results and those in Fig.~\ref{fig:pathways}(a) at $10^{10}$ W/cm$^2$ and above $10^{13}$ W/cm$^2$, showing the influence of the two ultrashort pulse pathways. At the lowest intensity it is the one-photon signal from the ground state that provides a dominant contribution to the PAD, leading to the deviation at $10^{10}$ W/cm$^2$. At intensities above $10^{13}$ W/cm$^2$, the additional exclusion of the one-photon signal leads to a better reconstruction than for the full data and when the two-photon pathway from the excited state is neglected. This can indicate that inadvertently the two ultrashort amplitudes have an opposite effect on the reconstruction or that an even higher-order amplitude is more dominant than the lower-order processes.
+
+\begin{figure}[t]
+\centering
+% \includegraphics[width=0.8\linewidth]{Venzke_fig_5a.eps}
+% \includegraphics[width=0.8\linewidth]{Venzke_fig_5b.eps}
+\caption{
+Same as Fig.\ \ref{fig:resonant} but based on PADs at just two time delays
+($\Delta t=\tau/2$).
+} 
+  \label{fig:twosamples}
+\end{figure}
+
+We have also studied how the reconstruction depends on the number of PAD samples over time. To this end, we present in Fig.\ \ref{fig:twosamples} the errors in amplitude and phase based on a reconstruction using just two PADs over one period of quantum beating $\tau = 2\pi / |E_{2p_1}-E_{1s}|$. If the full PAD in the $x-y$ plane is used (panel (a)) the reconstruction method remains successful over the same intensity regime as before. However, when the available signals are limited to the forward-backward direction and only two time delays are used as samples (panel (b)), the data are insufficient for a one-to-one mapping between the initial state and the obtained photoelectron signal and the reconstruction fails at nearly all peak laser intensities. This is due to the fact that for just two time samples the normalization leads to a greater chance that multiple values for amplitudes and the relative phase produce a given signal.
+
+\begin{figure}[t]
+\centering
+% \includegraphics[width=0.8\linewidth]{Venzke_fig_6a.eps}
+% \includegraphics[width=0.8\linewidth]{Venzke_fig_6b.eps}
+\caption{Same as Fig.\ \ref{fig:resonant}(a) but with accuracy of PADs limited to (a) 1\% and (b) 10\% of maximum value.
+}
+  \label{fig:detector}
+\end{figure}
+
+For the reconstruction in Figs.\ \ref{fig:resonant} and \ref{fig:twosamples} we have used results from TDSE calculations up to machine precision. Detectors in experiment do not operate with the same precision and we have therefore studied how less accurate data may impact the success of the reconstruction. To this end, we have deliberately added random noise at a certain percentage level of the maximum signal in the PADs to the TDSE data. In Fig.\ \ref{fig:detector} we show the results for the reconstruction with added noise at the (a) 1\% and (b) 10\% level using the signals from the full $x-y$ plane and 20 time samples. It is seen that an accuracy of detection at the 1\% level is sufficient to reconstruct the wavefunction with the same error as in the full calculation with TDSE data at machine precision (Fig.\ \ref{fig:resonant}(a)). Similar results and conclusions have been obtained for the other cases presented in Figs.\ \ref{fig:resonant} and \ref{fig:twosamples}. We expect that this limit for the detection accuracy can be achieved in a photoelectron measurement.
+
+\begin{figure}[t]
+\centering
+% \includegraphics[width=0.8\linewidth]{Venzke_fig_7a.eps}
+% \includegraphics[width=0.8\linewidth]{Venzke_fig_7b.eps}
+\caption{
+Same as Fig.\ \ref{fig:resonant} but for ionization at a detuned photon frequency of $\omega=0.8\omega_0$ (a) and $\omega=1.2\omega_0$ (b).
+Reconstruction is based on full PADs in $x-y$ plane at 20 time delays.
+} 
+  \label{fig:detuned}
+\end{figure}
+
+So far, we have considered a special case with equal population in the two states and the central frequency tuned to the energy difference between the two states. We will now study deviations from this special case. First, we consider a laser pulse detuned from the energy difference between the two equally populated states. We have calculated the photoelectron distribution at $E=\omega_E-|E_e|$, where $E_e$ is the energy of the excited $2p_1$-state. Given a sufficiently broad spectral range, i.e. sufficiently short pulse, the one-photon ground state signal (peaking at about $E = \omega_E-|E_g|$) at low intensities will interfere with the excited state signal creating the same quantum beating as before allowing for the reconstruction process to work. In Fig.~\ref{fig:detuned} we show the reconstruction results for a laser with central frequency of $\omega_E = 0.8\omega_0$ (a) and $\omega_E = 1.2\omega_0$ (b). 
+There are slightly larger errors in the $\omega_E=0.8\omega_0$ results, the superposition however has been still successfully reconstructed at intensities up to $10^{13}$ W/cm$^2$ in the same way as in the resonant case.
+
+\begin{figure}[t]
+\centering
+% \includegraphics[width=0.8\linewidth]{Venzke_fig_8.eps}
+\caption{
+Same as Fig.\ \ref{fig:resonant} but for an arbitrary unknown two-state superposition. Reconstruction is based on full PADs in $x-y$ plane at 20 time delays. 
+} 
+  \label{fig:random_state}
+\end{figure}
+
+To show that the reconstruction works for a two-state superposition with arbitrary unknown amplitudes and phases, we have performed a `blindfold' of the states randomly. The random values were held unknown and were only accessed to obtain the final error at the end of the reconstruction procedure. The results for this `blindfold' experiment in Fig.~\ref{fig:random_state} show that the reconstruction is successful leading to the same low errors as in the other cases studied.
+
+\begin{figure}[t]
+\centering
+% \includegraphics[width=0.9\linewidth]{Venzke_fig_9a.eps}
+% \includegraphics[width=0.9\linewidth]{Venzke_fig_9b.eps}
+% \includegraphics[width=0.9\linewidth]{Venzke_fig_9c.eps}
+\caption{
+Same as Fig.\ \ref{fig:resonant} but at peak intensities of $10^{11}$ W/cm$^2$ (blue lines) and $10^{13}$ W/cm$^2$ (orange lines) and pulse duration of 2 cycles. Results are shown as a function of variation of (a) carrier-to-envelope phase, (b) peak intensity and (c) both carrier-to-envelope phase and peak intensity. Reconstruction is based on full PADs in $x-y$ plane at 20 time delays.
+} 
+  \label{fig:noise}
+\end{figure}
+
+We have further considered variations in the laser parameters relevant for an application of the reconstruction method in an experiment. Typically, the peak intensity of the applied laser pulse may vary from shot to shot as well as over the interaction volume. Another parameter that is usually difficult to control is the carrier-to-envelope phase (CEP) of a laser pulse, specifically for ultrashort pulses. To study the impact on the reconstruction, CEP (Fig.~\ref{fig:noise}(a)), peak intensity (Fig.~\ref{fig:noise}(b)), and both CEP and peak intensity (Fig.~\ref{fig:noise}(c)) have been varied randomly within a certain percentage in the TDSE results. The results in Fig.~\ref{fig:noise} show that the reconstruction method still works well up to 10\% variation in both parameters before significant errors occur.
+
+
+Finally, we briefly consider the extension of the reconstruction method to a superposition of more than two states. The ionization scheme shown in Fig.\ \ref{fig:pathways} can be applied to each excited state in the superposition separately, taking the waves generated via one- and two-photon transitions from the ground state as reference. For the reconstruction measurement of a PAD at separate energies for each excited state in the superposition is required. Using PT results residuals $R(\mathbf{a})$ (Eq.\ \ref{eqn:residual}), taking into account both final momenta to reconstruct the wavefunction as before.
+
+\begin{figure}[t]
+\centering
+% \includegraphics[width=1.0\linewidth]{Venzke_fig_10.eps}
+\caption{Same as Fig.\ \ref{fig:resonant}(a) but for the superposition $(\ket{1s}+\ket{2p_1}+\ket{3p_1})/\sqrt{3}$ in the helium atom. 
+} 
+  \label{fig:3-state}
+\end{figure}
+
+To test the extension of the method we have considered the helium atom in the $(\ket{1s}+\ket{2p_1}+\ket{3p_1})/\sqrt{3}$ superposition. Applying a probe laser pulse at central photon energy tuned halfway between the $\ket{2p_1}$- and $\ket{3p_1}$-state and measurement of PADs at both $E=\omega-|E_{2p}|$ and $E=\omega-|E_{3p}|$. The results of the reconstruction, based on PADs in the full $x-y$-plane taken at 20 time delays, are shown as function of peak intensity for different pulse durations in Fig.~\ref{fig:3-state}. The results show that a similar degree of accuracy in the reconstruction as for the two-state superposition is achieved within the same intensity limits. The example indicates that the present method may be extended to even more complex wavepackets and electron dynamics. 
+
+Extension of the reconstruction method to more complex superpositions will require attention to the interference with the ground state signal and the increased dimensionality of the minimization space. Since the minimization process appears to be convex, a standard minimization algorithm, like conjugate gradient, may be sufficient for an efficient reconstruction. For each additional state in the interference scheme, the signal at the photoelectron energy chosen must include interference with at least one other state. This can be achieved if all transitions from the excited states interfere with that from the ground state by using a short pulse. If only longer pulses are available, coupling over many pairs of states reduces the required bandwidth for a reconstruction. Finally, due to the selection rules some initial states do not generate a signal in the $xy$-plane. In this case it may be required to utilize a full 4$\pi$-PAD for reconstruction of the corresponding superposition.
+
+
+We have studied a method to reconstruct a wavepacket in an atom, consisting of a superposition of states, based on the measurement of photoelectron angular distributions as a function of time delay with respect to the preparation of the wavepacket. The concept utilizes quantum beating signals due to interferences between the one-photon transition from the excited state with reference to one- and two-photon transitions from the ground state as well as two-photon transition from the excited state. For the reconstruction results from first- and second-order perturbation theory for the PADs are used to determine the phases and amplitudes of the states in the superposition via a minimization process.
+
+The method has been analyzed via application to the superposition of the ground and one or two excited states in helium atom. The corresponding wavepackets represent charge migrations on the attosecond time scale in form of ring currents around the helium core. PADs are simulated via solutions of the time-dependent Schr\"odinger equation in the single-active-electron approximation. It is shown that the method can be applied for resonant and off-resonant central photon energies. Via an error analysis of the reconstruction method accurate reconstruction has been demonstrated up to peak intensities of $10^{13}$ W/cm$^2$ and pulse durations of ten cycles. The impact of the ultrahort pathways (one-photon transition from the ground state and two-photon transition from the excited state) as reference signals at the different intensities and pulse durations has been analyzed. Furthermore, our work has shown that the reconstruction requires an accuracy of the PAD measurement of about 1\% of the maximum signal and stabilization of the peak intensity and carrier-to-envelope phase up to a variation of 10\%. Finally, we have discussed the extension of the concept to a superposition of more than two states. Results have been presented for a specific three-state superposition in helium atom, showing a similar level of accuracy as for the two-state superposition. 
+% section wavefunction_reconstruction (end)
+
+% chapter imaging_wave_packets_with_photoelectrons (end)
