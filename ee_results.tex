@@ -9,6 +9,82 @@
 \section{Hyperspherical harmonics}
 \label{sec:hyperspherical}
 
+Solving the TDSE for two active electrons is a computationally difficult task. A Naive approach would be to discretized the 6 spacial dimensions using finite difference. Finite difference would provide a straight forward solution and runs well on supercomputing systems, however, the size of the wavefunction scales like $N^6$. Therefore if we were to us a typical grid of 1000 points in each dimension, the wavefunction would be $10^{18}$ points in size. Merely writing down the wavefunction in double precision floating point numbers would require 16 Exabytes of RAM, approximately 100 times more RAM than exists on the largest supercomputer in the world (Summit, OLCF). Instead, it is convent to choose a basis that greatly reduces the size of the problem. One common approach is to use bi-spherical harmonics. In this case, each electron is expanded in 3D spherical coordinates. The radius is discretized with finite difference, b-splines, FEDVR, or similar method, and the two angular coordinates are explained in the standard 3D spherical harmonics in the same way a single active electron code would do. When taking the tensor product of the two electrons, the electron-electron repulsion term is then expanded in spherical harmonics such that
+\begin{equation}
+    \frac{1}{|\mathbf{r}_1-\mathbf{r}_2|}= 4\pi \sum_{\ell=0}^\infty \sum_{m=-\ell}^{m=\ell}\frac{1}{2\ell+1}\frac{r_<^\ell}{r_>^{\ell+1}}Y_{\ell m}^*(\theta_1, \phi_1)Y_{\ell m}^(\theta_2, \phi_2).
+\end{equation}
+Resulting in a 6D space that can be used to solve the problem of two electrons in a molecular or atomic potential interacting with a laser.
+
+In the bi-spherical codes, one must discretize two radi. As the grid increases in size, the code likes $N^2$. To cercomvent this problem, I have implemented a code that contains a single hyper-radius ($R$) and five angles that are expanded in 6D hyperspherical harmonics. Therefore as the grid size is increased, the code scales like $N$ and the number of spherical harmonics is controlled by the laser parameters. In the following section, I will describe the details to implementing two different ``coordinate systems'' that solve the two active electron problem. The first is through the use of Jacobi Coordinates, which allows for the finite mass of the nucleus to be accounted for. The second is making the infinite mass approximation for the nucleus allowing for the distance between the two electrons to be accessed more directly. The two problems can be solved with similar sized wavefunctions, however, the second method has a greatly reduced time in calculating matrix elements. This section is laid out $\cdots$ \textbf{TODO}
+
+\subsection{TDSE in hyperspherical coordinates} % (fold)
+\label{sub:tdse_in_hyperspherical_coordinates}
+The TDSE
+\begin{equation}
+    i\frac{\partial}{\partial t}\Psi = \hat{H}\Psi
+\end{equation}
+with hamiltonian written in hyperspherical coordinates is
+\begin{equation}
+   \hat{H} = -\frac{1}{2} \left[\frac{1}{R^5}\frac{\partial}{\partial R}\left(R^5\frac{\partial}{\partial R}\right) - \frac{\hat{K}^2(\Omega_5)}{R^2}\right] + \frac{W(\Omega_5)}{R}
+\end{equation}
+where $R=\sum_i x_i^2$ is the hyper radius with $x_i$ being a Cartesian coordinate, $\hat{K}$ as the angular momentum operator, $\Omega_5$ is the solid angle in 6D (5 angles), and $V(\mathbf{R}) = W(\Omega_5)/R$ being the potential. I will use the hyperspherical harmonics such they contain two-3D sub spaces as discribed in Sec.~\ref{ssub:spherical_harmonics}. 
+The resulting volume elements are 
+\begin{equation}
+    d\tau = R^5 dr d\Omega_i
+\end{equation}
+\begin{equation}
+    d\Omega_i = \cos^2\alpha \sin^2\alpha d\alpha d\omega
+\end{equation}
+\begin{equation}
+    d\omega = \sin\theta_{r_1} d\theta_{r_1} d\phi_{r_1} \sin\theta_{r_1} d\theta_{r_1} d\phi_{r_1}
+\end{equation}
+where $\theta_i$ and $\phi_i$ denote the angles in the $i={r_1}$ and $i={r_1}$ sub coordinate systems and $\alpha$ is the angle produced by the right triangle with sides R, ${r_1}$, and ${r_1}$ as shown in Fig.~\ref{fig:hyperradius}. $r_1$ and $r_2$ will be used as the Jacobi Coordinates for finite mass nucleus is considered or the single electron coordinates when the infinite mass approximation is made.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.3\linewidth]{figs/Two_electron/hyperradius.pdf}
+\caption{How the hyperradius (R) relates to the two single-electron sub coordinate systems ($r_1$, $r_2$)} 
+  \label{fig:hyperradius}
+\end{figure}
+
+As with the 3D TDSE, it is beneficial to remove the first derivative in the radial equation. This is accomplished by making a substitution of $\Psi = \psi/R^{5/2}$ giving us a Hamiltonian
+\begin{equation}
+   \hat{H} = -\frac{1}{2} \left[\frac{\partial^2}{\partial R^2} - \frac{\hat{K}^2(\Omega_5)+15/4}{R^2}\right] + \frac{W(\Omega_5)}{R}.
+\end{equation}
+The wavefunction can now be written as
+\begin{equation}
+    \psi = \sum\limits_{\mathbf{K}} U_{\mathbf{K}}(R) Y_{\mathbf{K}}(\Omega_5)
+\end{equation}
+with $U_{\mathbf{k}}(R)$ being the hyperradial part of the wavefunction and $Y_{\mathbf{K}}(\Omega_5)$ being the 6D hyperspherical harmonics described in Sec.~\ref{sec:spherical_harmonics}. Since hyperspherical harmonics are eigenfunctions of $\hat{K}^2$ with eigenvalue $K(K+4)$, the Hamiltonian becomes
+\begin{equation}
+   \hat{H}_{K} = -\frac{1}{2} \left[\frac{\partial^2}{\partial R^2} - \frac{K(K+4)+15/4}{R^2}\right] + \frac{W(\Omega_5)}{R}.
+\end{equation}
+I solve this equation using finite difference to discretized the hyperradial function ($U_{\mathbf{K}}(R)$). By setting $W(\Omega_5)=1$, the equation is the 6D hydrogen atom with an analytic solution that can be used to test the hyperadial portion of the code (see \cite{S_revik_2005} for energy levels). The angular portion of the equations is then expanded in hyperspherical harmonics. The details of the expansion are the focus of the remainder of this section.
+% subsection tdse_in_hyperspherical_coordinates (end)
+
+\subsubsection{Hyperspherical Harmonic Definition} % (fold)
+\label{ssub:spherical_harmonics}
+Utilizing Jacobi coordinates with $\mathbf{x_1}$ being the coordinate between the two electrons and $\mathbf{y_1}$ being the coordinate between the center of mass of the $e^-e^-$ pair and the nucleus. Our system is now a 6D space that we will describe by a hyper radius ($R$) and 5 angles contained in the solid angle $\Omega_{5_1}$. The angles will be expanded in 6D Hyperspherical harmonics that can be written in Jacobi coordinate system 1 as
+\begin{align}
+    Y^{\ell_{x_1},\ell_{y_1}}_{K,L,M}(\Omega_{5_1}) =& N^{\ell_{x_1},\ell_{y_1}}_K P_n^{(\ell_{x_1}+1/2,\ell_{y_1}+1/2)}(\cos(2\alpha)) \cos^{\ell_{x_1}}(\alpha) \sin^{\ell_{y_1}}(\alpha) \\ 
+    &\times\sum_{m_x,m_y}\bra{L,M}\ket{\ell_{x_1},m_x,\ell_{y_1},m_y}  \left[Y_{\ell_{x_1},m_x}(\hat{x}_1)\times Y_{\ell_{y_1},m_y}(\hat{y}_1)\right]
+\end{align}
+with
+\begin{equation}
+    N^{\ell_x,\ell_y}_K = \sqrt{\frac{2(K+2)(n!)\Gamma (n+\ell_x+\ell_y+2)}{\Gamma (n+\ell_x+3/2) \Gamma (n+\ell_y++3/2)}}
+\end{equation}
+where $P_n^{(\alpha,\beta)}$ is a Jacobi polynomial, $\bra{L,M}\ket{\ell_{x_1},m_x,\ell_{y_1},m_y}$ is a Clebsch–Gordan coefficient, and $\Gamma$ is a gamma function. 
+The quantum numbers are $K,\ell_{x_1},\ell_{y_1},L,M$ with $K=2n+\ell_{x_1}+\ell_{y_1}$ being the grand angular momentum, $\ell_{x_1}\ge0$ and $\ell_{y_1}\ge0$ being the angular momentum for the $\mathbf{x_1}$ and $\mathbf{y_2}$ coordinates respectively, $|\ell_{x_1}-\ell_{y_1}|\le L \le \ell_{x_1}+\ell_{y_1}$ and $-L \le M \le L$.
+
+It is convenient to separate out the part that depends on $\alpha$ from the $\mathbf{x}$ and $\mathbf{y}$ portions. We define
+\begin{equation}
+    \tilde{P}^{\ell_{x_1},\ell_{y_1}}_{n}(\alpha) = N^{\ell_{x_1},\ell_{y_1}}_K P_n^{(\ell_{x_1}+1/2,\ell_{y_1}+1/2)}(\cos(2\alpha)) \cos^{\ell_{x_1}}(\alpha) \sin^{\ell_{y_1}}(\alpha) 
+\end{equation}
+making the spherical harmonics 
+\begin{equation}
+    Y^{\ell_{x_1},\ell_{y_1}}_{K,L,M}(\Omega_{5_1}) =\tilde{P}^{\ell_{x_1},\ell_{y_1}}_{n}(\alpha)\sum_{m_x,m_y}\bra{L,M}\ket{\ell_{x_1},m_x,\ell_{y_1},m_y}  \left[Y_{\ell_{x_1},m_x}(\hat{x}_1)\times Y_{\ell_{y_1},m_y}(\hat{y}_1)\right].
+\end{equation}
+% section spherical_harmonics (end)
+ 
 \subsubsection{Jacobi Coordinates} % (fold)
 \label{ssub:jacobi_coordinates}
 For many particle systems, it is convenient to define Jacobi coordinates
@@ -39,29 +115,7 @@ Within the infinite mass approximation, $\beta_1=1/\sqrt{2}$ and $\beta_2=\beta_
 
 % section jacobi_coordinates (end)
 
-\subsubsection{Spherical Harmonics} % (fold)
-\label{ssub:spherical_harmonics}
-Utilizing Jacobi coordinates with $\mathbf{x_1}$ being the coordinate between the two electrons and $\mathbf{y_1}$ being the coordinate between the center of mass of the $e^-e^-$ pair and the nucleus. Our system is now a 6D space that we will describe by a hyper radius ($R$) and 5 angles contained in the solid angle $\Omega_{5_1}$. The angles will be expanded in 6D Hyperspherical harmonics that can be written in Jacobi coordinate system 1 as
-\begin{align}
-    Y^{\ell_{x_1},\ell_{y_1}}_{K,L,M}(\Omega_{5_1}) =& N^{\ell_{x_1},\ell_{y_1}}_K P_n^{(\ell_{x_1}+1/2,\ell_{y_1}+1/2)}(\cos(2\alpha)) \cos^{\ell_{x_1}}(\alpha) \sin^{\ell_{y_1}}(\alpha) \\ 
-    &\times\sum_{m_x,m_y}\bra{L,M}\ket{\ell_{x_1},m_x,\ell_{y_1},m_y}  \left[Y_{\ell_{x_1},m_x}(\hat{x}_1)\times Y_{\ell_{y_1},m_y}(\hat{y}_1)\right]
-\end{align}
-with
-\begin{equation}
-    N^{\ell_x,\ell_y}_K = \sqrt{\frac{2(K+2)(n!)\Gamma (n+\ell_x+\ell_y+2)}{\Gamma (n+\ell_x+3/2) \Gamma (n+\ell_y++3/2)}}
-\end{equation}
-where $P_n^{(\alpha,\beta)}$ is a Jacobi polynomial, $\bra{L,M}\ket{\ell_{x_1},m_x,\ell_{y_1},m_y}$ is a Clebsch–Gordan coefficient, and $\Gamma$ is a gamma function. 
-The quantum numbers are $K,\ell_{x_1},\ell_{y_1},L,M$ with $K=2n+\ell_{x_1}+\ell_{y_1}$ being the grand angular momentum, $\ell_{x_1}\ge0$ and $\ell_{y_1}\ge0$ being the angular momentum for the $\mathbf{x_1}$ and $\mathbf{y_2}$ coordinates respectively, $|\ell_{x_1}-\ell_{y_1}|\le L \le \ell_{x_1}+\ell_{y_1}$ and $-L \le M \le L$.
 
-It is convenient to separate out the part that depends on $\alpha$ from the $\mathbf{x}$ and $\mathbf{y}$ portions. We define
-\begin{equation}
-    \tilde{P}^{\ell_{x_1},\ell_{y_1}}_{n}(\alpha) = N^{\ell_{x_1},\ell_{y_1}}_K P_n^{(\ell_{x_1}+1/2,\ell_{y_1}+1/2)}(\cos(2\alpha)) \cos^{\ell_{x_1}}(\alpha) \sin^{\ell_{y_1}}(\alpha) 
-\end{equation}
-making the spherical harmonics 
-\begin{equation}
-    Y^{\ell_{x_1},\ell_{y_1}}_{K,L,M}(\Omega_{5_1}) =\tilde{P}^{\ell_{x_1},\ell_{y_1}}_{n}(\alpha)\sum_{m_x,m_y}\bra{L,M}\ket{\ell_{x_1},m_x,\ell_{y_1},m_y}  \left[Y_{\ell_{x_1},m_x}(\hat{x}_1)\times Y_{\ell_{y_1},m_y}(\hat{y}_1)\right].
-\end{equation}
-% section spherical_harmonics (end)
 
 \subsubsection{Raynal-Revai Coefficient (RRC)} % (fold)
 \label{ssub:raynal_revai_coefficient}
