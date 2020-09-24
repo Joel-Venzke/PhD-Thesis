@@ -143,7 +143,7 @@ $a_{11} = \cos(\xi_{ki})$,
 $a_{22} = \cos(\xi_{ki})$,
 $a_{12} = \sin(\xi_{ki})$, and 
 $a_{21} = -\sin(\xi_{ki})$
-with $\xi_{ki} = \arctan((-1)^{P_{RRC}}\sqrt{Mm_j/(m_i m_k)})$ where $m_i$ is the mass of the ith particle, M is the total mass and $P$ is the number of permutations of $m_1\rightarrow m_2\rightarrow m_3\rightarrow m_1$  as shown in Fig.~\ref{fig:jacobi_coord}.
+with $\xi_{ki} = \arctan((-1)^{P_{RRC}}\sqrt{Mm_j/(m_i m_k)})$ where $m_i$ is the mass of the ith particle, M is the total mass and $P$ is the number of permutations of $m_1\rightarrow m_2\rightarrow m_3\rightarrow m_1$  as shown in Fig.~\ref{fig:jacobi_coord}. As the value of $K$ increases, RRC become extremely computationally expensive limiting the usefulness of this approach.
 
 \textbf{Should I include this?: Note that this formalism is subject to roundoff error for large values of $K$. When large $K$ is utilized, a recursion relation version should be utilized (see S.\ N.\ Ershov. Nuclei Theory \textbf{79}, 694-702 (2016)).}
 
@@ -229,6 +229,73 @@ Since the $M$ quantum number does not change and $M=0$ for the ground state of H
 
 \subsubsection{Electronic Coordinates} % (fold)
 \label{ssub:electronic_coordinates}
+To remove the need for RRC due to their numerical complexity for high K values, we will use the nucleus as the origin and label the coordinates from the proton to the ith electron as $\mathbf{r}_i$ where $i=1,2$. Therefore we have
+\begin{align}
+r_1 =& R \cos(\alpha)\\
+r_2 =& R \sin(\alpha)
+\end{align}
+and a solid angle 
+\begin{equation}
+  d\Omega_5 = \cos^2(\alpha)  \sin^2(\alpha) d\alpha d\omega_{r_1} d\omega_{r_2}.
+\end{equation}
+We will use spherical harmonics with labels $Y_{K,L,M}^{\ell_{r_1},\ell_{r_2}}(\Omega_5)$ where $\ell_{r_i}$ is the spherical harmonic for the 3D space $\mathbf{r}_i$. The electron nucleus terms take the form $-Z/r_i$ and the  matrix elements become
+\begin{equation}
+  -\bra{\Psi'}\frac{Z}{r_1}\ket{\Psi} = -\frac{Z}{R}\delta_{L',L}\delta_{M',M}\delta_{\ell_{r_1}',\ell_{r_1}}\delta_{\ell_{r_2}',\ell_{r_2}} \int\limits_0^{\pi/2}\ \tilde{P}^{\ell_{r_1}',\ell_{r_2}'}_{n'}(\alpha) \tilde{P}^{\ell_{r_1},\ell_{r_2}}_{n}(\alpha) \sin^2(\alpha) \cos(\alpha)d\alpha
+\end{equation}
+and 
+\begin{equation}
+  -\bra{\Psi'}\frac{Z}{r_2}\ket{\Psi} = -\frac{Z}{R}\delta_{L',L}\delta_{M',M}\delta_{\ell_{r_1}',\ell_{r_1}}\delta_{\ell_{r_2}',\ell_{r_2}} \int\limits_0^{\pi/2}\ \tilde{P}^{\ell_{r_1}',\ell_{r_2}'}_{n'}(\alpha) \tilde{P}^{\ell_{r_1},\ell_{r_2}}_{n}(\alpha) \sin(\alpha) \cos^2(\alpha)d\alpha.
+\end{equation}
+Note that the $1/R$ can be factored out allowing the integral over $\alpha$ to be preformed once and stored in a lookup table to improve computational performance.
+
+The electron-electron term is less strait forward. We start by remembering the jackson formula
+\begin{equation}
+  \frac{1}{|\mathbf{r}_1-\mathbf{r}_2|} = \sum_{\ell=0}^\infty \sum_{m=-\ell}^\ell \frac{4\pi}{2\ell+1} \frac{r_<^\ell}{r_>^{\ell+1}} Y^*_{\ell,m}(\hat{\mathbf{r}}_2)Y_{\ell,m}(\hat{\mathbf{r}}_1)
+\end{equation}
+and then after a few hours of math you arrive at 
+\begin{align}
+  \bra{\Psi'}\frac{1}{|\mathbf{r}_1-\mathbf{r}_2|}\ket{\Psi} &= \frac{\delta_{L',L}\delta_{M',M}}{R} \sqrt{\frac{(2\ell_{r_1}'+1)(2\ell_{r_2}'+1)}{(2\ell_{r_1}+1)(2\ell_{r_2}+1)}}\\
+  %
+  \times& \sum_{\ell=max(|\ell_{r_1}-\ell_{r_2}|,|\ell_{r_1}'-\ell_{r_2}'|)}^{min(|\ell_{r_1}+\ell_{r_2}|,|\ell_{r_1}'+\ell_{r_2}'|)} \bra{\ell_{r_1}',0,\ell,0}\ket{\ell_{r_1},0} \bra{\ell_{r_2}',0,\ell,0}\ket{\ell_{r_2},0} \\
+  %
+  \times& \left[\int\limits_0^{\pi/4}\ \tilde{P}^{\ell_{r_1}',\ell_{r_2}'}_{n'}(\alpha) \tilde{P}^{\ell_{r_1},\ell_{r_2}}_{n}(\alpha) \frac{\sin^{\ell+2}(\alpha)}{\cos^{\ell-1}(\alpha)}d\alpha + \int\limits_{\pi/4}^{\pi/2}\ \tilde{P}^{\ell_{r_1}',\ell_{r_2}'}_{n'}(\alpha) \tilde{P}^{\ell_{r_1},\ell_{r_2}}_{n}(\alpha) \frac{\cos^{\ell+2}(\alpha)}{\sin^{\ell-1}(\alpha)}d\alpha\right]\\
+  %
+  \times& \sum_{m_{r_1}'=-\ell_{r_1}', m_{r_2}' = M'-m_{r_1}'}^{\ell_{r_1}'} \bra{L',M'}\ket{\ell_{r_1}',m_{r_1}',\ell_{r_2}',m_{r_2}'}\\
+  %
+  \times& \sum_{m_{r_1}=-\ell_{r_1}, m_{r_2} = M-m_{r_1}, m = m_{r_1}-m_{r_1}'}^{\ell_{r_1}} (-1)^m \bra{L,M}\ket{\ell_{r_1},m_{r_1},\ell_{r_2},m_{r_2}}\\
+  %
+  \times& \bra{\ell_{r_1}',m_{r_1}',\ell,m}\ket{\ell_{r_1},m_{r_1}} \bra{\ell_{r_2}',m_{r_2}',\ell,m}\ket{\ell_{r_2},m_{r_2}}
+\end{align}
+note the requirement for the last row adds $m=m_{r_1}-m_{r_1}'$ and $m=m_{r_2}'-m_{r_2}$ which gives the $\delta_{M',M}$ as well.
+
+Finally, we need the laser operator
+\begin{equation}
+     V_{las}(\mathbf{R}) = - E_z z_{r_1} - E_z z_{r_2}.
+\end{equation} 
+Since each electron has its own 3D space, it is easier to calculate the laser operator for each electron independently. It is then convent to define 
+\begin{align}
+    V_{las}(\mathbf{r_1}) &= - E_z z_{r_1} = -2 E_z z_{r_2} \sqrt{\frac{\pi}{3}}Rsin(\alpha_1)Y_{1,0}(\hat{r}_1),\\
+    V_{las}(\mathbf{r_2}) &= - E_z z_{r_2} = -2 E_z z_{r_2} \sqrt{\frac{\pi}{3}}Rsin(\alpha_1)Y_{1,0}(\hat{r}_2),\\
+    V_{las}(\mathbf{R}) &= V_{las}(\mathbf{r_1})+V_{las}(\mathbf{r_2}).
+\end{align}
+The resulting matrix elements are
+\begin{align}
+    \bra{\Psi'}V_{las}(\mathbf{r_1})\ket{\Psi} &= - E_z R\sqrt{\frac{(2\ell_{r_1}'+1)}{(2\ell_{r_1}+1)}}\delta_{L',L\pm1}\delta_{M',M}\delta_{\ell_{r_1}',\ell_{r_1}\pm1}\delta_{\ell_{r_2}',\ell_{r_2}}\bra{\ell_{r_1}',0,1,0}\ket{\ell_{r_1},0} \\
+    & \times \int\limits_0^{\pi/2}\ \tilde{P}^{\ell_{r_1}',\ell_{r_2}'}_{n'}(\alpha) \tilde{P}^{\ell_{r_1},\ell_{r_2}}_{n}(\alpha) \sin^3(\alpha) \cos^2(\alpha)d\alpha\\
+    &\times \sum_{m_{r}=-\min
+    \left[l_{r_1}',l_{r_1},l_{r_2}',l_{r_2}\right]}^{\min
+    \left[l_{r_1}',l_{r_1},l_{r_2}',l_{r_2}\right]} \bra{\ell_{r_1}',m_{r},1,0}\ket{\ell_{r_1},m_{r}} \\
+    &\times\bra{L',M}\ket{\ell_{r_1}',m_{r},\ell_{r_2},-m_{r}}\bra{L,M}\ket{\ell_{r_1},m_{r},\ell_{r_2},-m_{r}}
+\end{align}
+and 
+\begin{align}
+    \bra{\Psi'}V_{las}(\mathbf{r_2})\ket{\Psi} &= - E_z R\sqrt{\frac{(2\ell_{r_2}'+1)}{(2\ell_{r_2}+1)}}\delta_{L',L\pm1}\delta_{M',M}\delta_{\ell_{r_1}',\ell_{r_1}}\delta_{\ell_{r_2}',\ell_{r_2}\pm1}\bra{\ell_{r_2}',0,1,0}\ket{\ell_{r_2},0} \\
+    & \times \int\limits_0^{\pi/2}\ \tilde{P}^{\ell_{r_1}',\ell_{r_2}'}_{n'}(\alpha) \tilde{P}^{\ell_{r_1},\ell_{r_2}}_{n}(\alpha) \sin^3(\alpha) \cos^2(\alpha)d\alpha\\
+    &\times \sum_{m_{r}=-\min
+    \left[l_{r_1}',l_{r_1},l_{r_2}',l_{r_2}\right]}^{\min
+    \left[l_{r_1}',l_{r_1},l_{r_2}',l_{r_2}\right]} \bra{\ell_{r_2}',m_{r},1,0}\ket{\ell_{r_2},m_{r}} \\
+    &\times\bra{L',M}\ket{\ell_{r_1},m_{r},\ell_{r_2}',-m_{r}}\bra{L,M}\ket{\ell_{r_1},m_{r},\ell_{r_2},-m_{r}}.
+\end{align}
 
 % subsection infinite_mass_nucleus (end)
 
