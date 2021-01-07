@@ -228,7 +228,22 @@ Choosing a fixed order of MD nodes for all values of $r$ leads to two major issu
 
 A final implementation issue is caused when attaching Slater type orbitals ($e^{-\alpha r}$) to the stencil. Since $e^{-\alpha r}$ becomes small quickly for increasing $r$, it can have variations below machine precision in a given stencil. The result is a linear dependence with the constant term producing poor stencils. To remedy this issue, $e^{-\alpha r}$ is only attached for stencils centered at radii with $e^{-\alpha r_1}>10^{-10}$.
 
-\textbf{TODO: add some results}
+\begin{figure}[t]
+\centering
+   \includegraphics[width=0.32\linewidth]{figs/rbf_no_exp.eps}
+    \includegraphics[width=0.32\linewidth]{figs/rbf_with_exp.eps}
+    \includegraphics[width=0.32\linewidth]{figs/rbf_imag.eps}
+   
+\caption{Panels a (b) show the convergence of the lowest energy bound states in Hydrogen without (with) an attached Slater type orbital for various radial spacing ($dr$). Panel c shows the minimum and maximum imaginary part of the calculated bound state energies.
+} 
+  \label{fig:rbf_conver}
+\end{figure}
+
+Convergence of the lowest 5 bound states using the RBF code are shown in Fig.~\ref{fig:rbf_conver}. Results were obtained on mesh with a 30 a.u.\ radial extend, 8th order MD node set, 7th order PHS RBF, attached polynomials up to 3rd order, and a stencil size of 54 nodes. Panel a and b shows the error in the real part of the states energy without and with a Slater type orbital $e^{-r}$ being attached. The addition for the Slater type orbital give machine precision for the ground state (blue line) and improves the 2s (orange line) energy until nonphysical states appear with $dr<0.1$. The 2p states see little benefit from the Slater type orbital.
+
+Fig.~\ref{fig:rbf_conver}c shows the maximum and minimum imaginary part of the energy of the 5 calculated states. The splitting occurs for the states with $m\ne0$ when meshes other than a Cartesian  lattice are used. The states with $\mathcal{I}m[E]<0$ lead to unstable time propagation for the Crank-Nicolson method used in this work. Further work on mesh generation, Hyperviscoisty, and/or time propagation methods will be needed to study time dependent problems with the RBF.
+
+
 % subsection radial_basis_functions (end)
 
 \subsection{Numerical integration} % (fold)
