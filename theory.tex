@@ -407,7 +407,7 @@ For many atoms, full treatment of Eq.~\ref{eq:atoms_and_molecules} is impractica
   \label{eq:SAE_TDSE}
   \hat{H} = -\frac{\mathbf{p}^2}{2} + V_{SAE}(\mathbf{r}) + V_{las}(t)
 \end{equation}
-where $V_{las}(t)$ is the laser operator and $V_{SAE}(\mathbf{r})$ is the SAE potential. The SAE potentials utilized in this work take the form \cite{reiff_single-active_2020} 
+where $V_{las}(t)$ is the laser operator and $V_{SAE}(\mathbf{r})$ is the SAE potential. The SAE potentials utilized in this work take the form \cite{reiff2020} 
 \begin{equation}
   \label{eq:SAE_pot}
   V_{SAE}(\mathbf{r}) = - \frac{z}{r} - \frac{Z_c e^{-c r}}{r} - \sum_n a_n e^{-b_n r}.
@@ -427,7 +427,7 @@ The coefficients are obtained by fitting to a potential obtained through density
  \hline
 \end{tabular}
 \end{center}
- \caption{Coefficients of SAE potentials in Eq.~\ref{eq:SAE_pot} for hydrogen, helium, and neon from \cite{reiff_single-active_2020}.}
+ \caption{Coefficients of SAE potentials in Eq.~\ref{eq:SAE_pot} for hydrogen, helium, and neon from \cite{reiff2020}.}
  \label{tab:SAE}
 \end{table}
 
@@ -526,7 +526,7 @@ where the second term forces the time integral of the electric field to be zero 
   \label{fig:spectra}
 \end{figure}
 
-As the pulse length decreases, the central frequency (defined by the peak of the frequency spectrum) of the vector potential and electric fields differ. In Fig.~\ref{fig:spectra} the dashed blue lines show the electric field and the orange solid lines show the vector potential for a Gaussian pulse with a pulse duration of 1 cycle FWHM (top) and 4 cycle FWHM (bottom). The time domain (right) looks similar, up to the expected $\pi/2$ phase shift, but the frequency spectrum (right) differ significantly for the 1 cycle FWHM pules. By utilizing TDSE solutions, it is possible to show that the central frequency of the electric field is the relevant frequency in both length and velocity gauge calculations \cite{venzke_central_2018}. 
+As the pulse length decreases, the central frequency (defined by the peak of the frequency spectrum) of the vector potential and electric fields differ. In Fig.~\ref{fig:spectra} the dashed blue lines show the electric field and the orange solid lines show the vector potential for a Gaussian pulse with a pulse duration of 1 cycle FWHM (top) and 4 cycle FWHM (bottom). The time domain (right) looks similar, up to the expected $\pi/2$ phase shift, but the frequency spectrum (right) differ significantly for the 1 cycle FWHM pules. By utilizing TDSE solutions, it is possible to show that the central frequency of the electric field is the relevant frequency in both length and velocity gauge calculations \cite{venzke2018_Central}. 
 It is, therefore, important to correct the central frequency used in the vector potential when the pulse length is short. An approximate correction is given by
 \begin{equation}
 \label{eq:fshift}
@@ -551,7 +551,7 @@ is the number of cycles within one standard deviation to either side of the puls
 t_0 \equiv \frac{\int_{-\infty}^{\infty} t f(t) dt}{\int_{-\infty}^{\infty} f(t) dt}.
 \end{split}
 \end{equation}
-This correction is sufficient for most pulse shapes, however, correction terms can be found in \cite{venzke_central_2018}.
+This correction is sufficient for most pulse shapes, however, correction terms can be found in \cite{venzke2018_Central}.
 
 
 
