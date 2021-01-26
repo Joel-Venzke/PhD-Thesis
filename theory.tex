@@ -273,7 +273,7 @@ The wavefunction at large $r$ must decay to zero for it to be normalizable. Ther
 \end{figure}
 
 
-To absorb any outgoing wave packets, we utilize an exterior complex scaling method (ECS, \cite{He_ECS_2007}) on the outer portion of the grid. This is equivalent to changing the spatial step used in finite difference from $x_{n+1} = x_n+dx$ to $x_{n+1} = x_n+e^{i\eta}dx$. In test calculations we have found that $\eta=\pi / 4.0$ works well. The result is an exponential decay of the wavefunction in the absorbing region. Obtaining the finite difference weights in the transition and ECS region is done by implementing the Fornberg method \cite{Fornberg1988} using complex numbers.
+To absorb any outgoing wave packets, we utilize an exterior complex scaling method (ECS, \cite{He2007}) on the outer portion of the grid. This is equivalent to changing the spatial step used in finite difference from $x_{n+1} = x_n+dx$ to $x_{n+1} = x_n+e^{i\eta}dx$. In test calculations we have found that $\eta=\pi / 4.0$ works well. The result is an exponential decay of the wavefunction in the absorbing region. Obtaining the finite difference weights in the transition and ECS region is done by implementing the Fornberg method \cite{Fornberg1988} using complex numbers.
 % subsection boundary_conditions (end)
 
 
@@ -559,9 +559,9 @@ This correction is sufficient for most pulse shapes, however, correction terms c
 \textbf{HERE}
 
 
-Few-cycle laser pulses are used in many interesting strong-field applications (for reviews, see e.g., \cite{popmintchev10,suzuki14,vrakking14,pazourek15,wang15,xu16}): For example, high-order harmonics and (isolated) attosecond pulses are generated, ultrafast atomic and molecular dynamics as well as charge transfer and exciton dynamics can be induced and time resolved, molecular structure can be imaged on ultrashort time scales, or chemical reactions may be controlled. Therefore, light sources generating ultrashort intense laser pulses in different regions of the spectrum, at extreme ultraviolet \cite{goulielmakis08}, ultraviolet \cite{durfee99}, optical \cite{fork87}, near-infrared \cite{zhou94,nisoli96,nisoli97} and infrared wavelengths \cite{ishii14,pupeza15,li16}, have been developed over the past decades.  The simulation of the time-dependent response of matter to a few-cycle pulse, e.g. via the numerical solution of the corresponding time-dependent Schr\"odinger equation (TDSE), can however crucially depend on the definition of the electric field $E(t)$ used. To achieve quantitative agreement between theory and experiment, the potential issues present in both numerical calculations and experiment must be well understood and minimized.
+Few-cycle laser pulses are used in many interesting strong-field applications (for reviews, see e.g., \cite{popmintchev2010,suzuki2014,vrakking2014,pazourek2015,wang2015,xu2016}): For example, high-order harmonics and (isolated) attosecond pulses are generated, ultrafast atomic and molecular dynamics as well as charge transfer and exciton dynamics can be induced and time resolved, molecular structure can be imaged on ultrashort time scales, or chemical reactions may be controlled. Therefore, light sources generating ultrashort intense laser pulses in different regions of the spectrum, at extreme ultraviolet \cite{goulielmakis2008}, ultraviolet \cite{durfee1999}, optical \cite{fork1987}, near-infrared \cite{zhou1994,nisoli1996,nisoli1997} and infrared wavelengths \cite{ishii2014,pupeza2015,li2016}, have been developed over the past decades.  The simulation of the time-dependent response of matter to a few-cycle pulse, e.g. via the numerical solution of the corresponding time-dependent Schr\"odinger equation (TDSE), can however crucially depend on the definition of the electric field $E(t)$ used. To achieve quantitative agreement between theory and experiment, the potential issues present in both numerical calculations and experiment must be well understood and minimized.
 
-As pointed out by Chelkowski and Bandrauk \cite{chelkowski02}, the representation of $E(t)$ via an envelope function times a trigonometric function may lead to a non-vanishing potential $A(t)$ at the end of the pulse. This inconsistency can be resolved by first defining the magnitude of the vector potential $A(t)$ as (we use Hartree atomic units: $e = m_e = \hbar =1$) \cite{chelkowski02}: 
+As pointed out by Chelkowski and Bandrauk \cite{chelkowski2002}, the representation of $E(t)$ via an envelope function times a trigonometric function may lead to a non-vanishing potential $A(t)$ at the end of the pulse. This inconsistency can be resolved by first defining the magnitude of the vector potential $A(t)$ as (we use Hartree atomic units: $e = m_e = \hbar =1$) \cite{chelkowski2002}: 
 \begin{equation}
 A(t) = \frac{c E_0}{\omega_A}f(t) \cos(\omega_A t +\phi_A),
 \label{eq:vectorpotential}
@@ -622,7 +622,7 @@ For the further analysis, we note that in order for the central frequencies to b
   \item $f(t)$ falls off at least exponentially for large $|t|$, 
 \item $f(t)$ contains no appreciable Fourier components larger than $\omega_A$.
 \end{itemize}
-These assumptions could be relaxed significantly, but they are sufficient for the present discussion and all practical purposes. The ratio of the central frequencies is given by the leading terms of an expansion in $1/N$ as (see Appendix \ref{sec:appendix-frequency}):
+These assumptions could be relaxed significantly, but they are sufficient for the present discussion and all practical purposes. The ratio of the central frequencies is given by the leading terms of an expansion in $1/N$ as:
 % \begin{eqnarray}
 % \label{eq:fshift}
 % \frac{\omega_E}{\omega_A} 
@@ -680,7 +680,11 @@ In the next section, we demonstrate that $\omega_E$ is the physically observable
 %
 Greater accuracy could be obtained in either case by including the correction term in Eq. (\ref{eq:fshift}); however, the results in Fig.~\ref{fig:shift} show that this is in general not necessary. 
 
-In this section we present results of numerical calculations and first-order perturbation theory which exemplify effects of the frequency shift on observables related to excitation, ionization and high harmonic generation induced by short laser pulses. The frequency shifts obtain using first-order perturbation theory and numerical calculations agree well with our analytical predictions shown in Section~\ref{sec:pulse} and derived in Appendix~\ref{sec:appendix-frequency}. To this end, we solved the 3D one-electron time-dependent Schr\"odinger equation (TDSE) in velocity gauge:
+In this section we present results of numerical calculations and first-order perturbation theory which exemplify effects of the frequency shift on observables related to excitation, ionization and high harmonic generation induced by short laser pulses. The frequency shifts obtain using first-order perturbation theory and numerical calculations agree well with our analytical predictions shown in 
+% Section~\ref{sec:pulse} 
+and derived in
+% Appendix~\ref{sec:appendix-frequency}
+. To this end, we solved the 3D one-electron time-dependent Schr\"odinger equation (TDSE) in velocity gauge:
 \begin{equation}
 i\frac{\partial}{\partial t}\psi(\mathbf{r},t) = \left[\frac{\mathbf{p}^2}{2} - \frac{\mathbf{A}(t) \cdot \mathbf{p}}{c} + V(\mathbf{r})\right]\psi(\mathbf{r},t)
 \end{equation}
@@ -692,7 +696,7 @@ for atomic hydrogen with a soft-core Coulomb potential
 \begin{equation}
 V(\mathbf{r}) = -\frac{1}{\sqrt{\mathbf{r}^2+\alpha ^2}}.
 \end{equation}
-We consider a linearly polarized laser pulse within the dipole approximation, so $\mathbf{A}(t)=A(t)\hat{z}$ and $\mathbf{E}(t)=E(t)\hat{z}$. Taking advantage of azimuthal symmetry, the wavefunction can be represented in 2D cylindrical coordinates $\rho$ and $z$. We used the second order finite difference method for spatial derivatives and the fully implicit second order Crank-Nicholson method for time propagation (for more details on the numerical implementation, see \cite{venzke-submitted}). The laser field magnitudes $A(t)$ and $E(t)$ were defined as in Eq.~(\ref{eq:vectorpotential}) and Eq.~(\ref{eq:efield}), with a Gaussian envelope function $f(t)$.
+We consider a linearly polarized laser pulse within the dipole approximation, so $\mathbf{A}(t)=A(t)\hat{z}$ and $\mathbf{E}(t)=E(t)\hat{z}$. Taking advantage of azimuthal symmetry, the wavefunction can be represented in 2D cylindrical coordinates $\rho$ and $z$. We used the second order finite difference method for spatial derivatives and the fully implicit second order Crank-Nicholson method for time propagation (for more details on the numerical implementation, see \cite{venzke2020_ionization}). The laser field magnitudes $A(t)$ and $E(t)$ were defined as in Eq.~(\ref{eq:vectorpotential}) and Eq.~(\ref{eq:efield}), with a Gaussian envelope function $f(t)$.
 Specifically,
 \begin{equation}
 \label{eq:numericalVecPot}
@@ -700,7 +704,8 @@ A(t) = \frac{E_0c}{\omega_A}\sin(\omega_A t)e^{-(2t/\tau)^2\ln 2} ~,
 \end{equation}
 where $\tau$ is the FWHM pulse duration. The results presented below were obtained in velocity gauge, but additional test calculations in length gauge have confirmed that the results are gauge invariant.
 
-In all calculations for single photon ionization (Sec.~\ref{sec:single_photon}), excitation (Sec.~\ref{sec:excitation}) and high harmonic generation (Sec.~\ref{sec:HHG}) we used $\alpha=0.029$ a.u.,\ a grid spacing of 0.1 a.u.,\ and a time step of 0.1 a.u. The soft core parameter is used to match the ground state energy to that of atomic hydrogen, given by $E_{1s} = -0.5001$ a.u. on the grid, and an excited state energy of $E_{2p} = -0.12504$ a.u.\  To ensure the wavefunction remains on the grid for our calculation of the photoelectron spectrum, the grid extended 500 a.u.\  in the $\rho$-direction and 1000 a.u in the $z$-direction, with an exterior complex scaling absorbing boundary in the outer 50 a.u for single photon ionization (Sec.~\ref{sec:single_photon}). The excitation (Sec.~\ref{sec:excitation}) and high harmonic generation (Sec.~\ref{sec:HHG}) calculations were preformed on a grid that extended over 100 a.u.\  in the $\rho$-direction and 200 a.u.\ in the $z$-direction, with an absorbing boundary over the outer 5 a.u.
+In all calculations for single photon ionization, excitation and high harmonic generation we used $\alpha=0.029$ a.u.,\ a grid spacing of 0.1 a.u.,\ and a time step of 0.1 a.u. The soft core parameter is used to match the ground state energy to that of atomic hydrogen, given by $E_{1s} = -0.5001$ a.u. on the grid, and an excited state energy of $E_{2p} = -0.12504$ a.u.\  To ensure the wavefunction remains on the grid for our calculation of the photoelectron spectrum, the grid extended 500 a.u.\  in the $\rho$-direction and 1000 a.u in the $z$-direction, with an exterior complex scaling absorbing boundary in the outer 50 a.u for single photon ionization
+% (Sec.~\ref{sec:single_photon}). The excitation (Sec.~\ref{sec:excitation}) and high harmonic generation (Sec.~\ref{sec:HHG}) calculations were preformed on a grid that extended over 100 a.u.\  in the $\rho$-direction and 200 a.u.\ in the $z$-direction, with an absorbing boundary over the outer 5 a.u.
 
 First, we consider single photon ionization of the hydrogen atom by a few-cycle laser pulse with peak intensity $10^{13}$ W/cm$^2$ and central frequency $\omega_{\text{central}} = 2.0$ a.u. The central frequency is implemented either by setting $\omega_A=\omega_{\text{central}}$ or setting $\omega_E=\omega_{\text{central}}$, using the method described in the previous section. Photoelectron momentum spectra $P(k)$ were obtained by the following procedure: the TDSE was propagated for five times the FWHM pulse duration plus an additional 100 a.u.\  in time, then all bound states with principle quantum number $n\le 8$ were projected out, and lastly the remaining unbound wavepacket $\psi_{\text{ionized}}$ was projected onto coulomb wave functions up to $l_{\text{max}}=5$. That is,
 %
@@ -727,7 +732,7 @@ Typically, the excitation probability is greatest when the central frequency of 
 \end{equation}
 where $E_\text{final}$ and $E_\text{initial}$ are the energy of the final and initial state, respectively. In view of the predicted frequency shift between the central frequencies $\omega_A$ and $\omega_E$, we therefore expect that the results for resonant excitation will provide insights into the physical relevance of $\omega_A$ vs.~$\omega_E$.
 
-Within first order perturbation theory, the excitation probability is given by (for further analysis, see Appendix \ref{sec:appendix-perturbation}):
+Within first order perturbation theory, the excitation probability is given by:
 \begin{equation}
 \begin{split}
 P_{i\rightarrow f}&= |\tilde{A}(\omega_\text{res})|^2\left(\frac{\mu\omega_\text{res}}{c}\right)^2 \\
@@ -766,7 +771,7 @@ Numerical results for population in $2s$ state following 2-photon excitation wit
   \label{fig:h-excited_2s}
 \end{figure}
 
-These conclusions are further supported by our numerical results for two-photon excitation from the $1s$ to the $2s$ state in Fig.~\ref{fig:h-excited_2s}. Whereas the peak of the population as a function of $\omega_E$ (panel b) occurs at $\omega_\text{res}$, independent of the pulse duration, the peak of the population as a function of  $\omega_A$ once again shifts to lower frequencies in Fig.~\ref{fig:h-excited_2s}(a). We note that, if the population as function of $\omega_A$ in Figs.~\ref{fig:h-excited_2p} and \ref{fig:h-excited_2s} were used to determine the energy difference $|E_\text{final} - E_\text{initial}|$, the error caused by the frequency shift would be twice as much in the two-photon case as in the one-photon case, accounting for the difference in $\tau_{n_p}$. This indicates that multiphoton processes may be affected by the frequency shift even more than few-photon processes. To further illustrate this point, we examine high harmonic generation in subsection~\ref{sec:HHG}.
+These conclusions are further supported by our numerical results for two-photon excitation from the $1s$ to the $2s$ state in Fig.~\ref{fig:h-excited_2s}. Whereas the peak of the population as a function of $\omega_E$ (panel b) occurs at $\omega_\text{res}$, independent of the pulse duration, the peak of the population as a function of  $\omega_A$ once again shifts to lower frequencies in Fig.~\ref{fig:h-excited_2s}(a). We note that, if the population as function of $\omega_A$ in Figs.~\ref{fig:h-excited_2p} and \ref{fig:h-excited_2s} were used to determine the energy difference $|E_\text{final} - E_\text{initial}|$, the error caused by the frequency shift would be twice as much in the two-photon case as in the one-photon case, accounting for the difference in $\tau_{n_p}$. This indicates that multiphoton processes may be affected by the frequency shift even more than few-photon processes. To further illustrate this point, we examine high harmonic generation.
 
 
 Finally, we consider a highly nonlinear laser induced process. High harmonic generation (HHG) in atoms can be described as absorption of an odd number of photons leading to the excitation of a electron, followed by the emission of a single photon as the electron recombines into the ground state. Based on the results above, we expect that in this nonlinear process the frequency shift $\Delta\omega$ between $\omega_A$ and $\omega_E$ will lead to a shift of the energy of the $n_p$th harmonic by $n_p\Delta\omega$. In our calculations the HHG spectrum has been obtained by a Fourier transformation of the time dependent dipole acceleration along the laser polarization direction. A Hanning filter was used to return the dipole acceleration to zero at the beginning and end of the simulation. 
