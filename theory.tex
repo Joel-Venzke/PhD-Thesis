@@ -230,9 +230,9 @@ A final implementation issue is caused when attaching Slater type orbitals ($e^{
 
 \begin{figure}[t]
 \centering
-   \includegraphics[width=0.32\linewidth]{figs/rbf_no_exp.eps}
-    \includegraphics[width=0.32\linewidth]{figs/rbf_with_exp.eps}
-    \includegraphics[width=0.32\linewidth]{figs/rbf_imag.eps}
+   \includegraphics[width=0.32\linewidth]{figs/rbf_no_exp.png}
+    \includegraphics[width=0.32\linewidth]{figs/rbf_with_exp.png}
+    \includegraphics[width=0.32\linewidth]{figs/rbf_imag.png}
    
 \caption{Panels a (b) show the convergence of the lowest energy bound states in Hydrogen without (with) an attached Slater type orbital for various radial spacing ($dr$). Panel c shows the minimum and maximum imaginary part of the calculated bound state energies.
 } 
@@ -384,7 +384,7 @@ For a fixed target, it is advantageous to use the highest order finite differenc
 \label{sub:parallel_computing}
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.5\columnwidth]{figs/Rydberg/multi_node.eps}
+\includegraphics[width=0.5\columnwidth]{figs/Rydberg/multi_node.png}
 \caption{\label{fig:scaling} Scaling results for present Crank-Nicolson method. Two runs each for calculations with 1 million (blue with squares) and 15 million grid points (green with triangles) have been performed. Note that the scaling improves with increasing number of grid points.
 }
 \end{figure}
@@ -517,10 +517,10 @@ where the second term forces the time integral of the electric field to be zero 
 \label{sub:frequency_shift}
 \begin{figure}[!ht]
 \centering
-   \includegraphics[width=0.35\linewidth]{figs/Frequency_shift/01_field.eps}
-   \includegraphics[width=0.35\linewidth]{figs/Frequency_shift/01_spec.eps}
-   \includegraphics[width=0.35\linewidth]{figs/Frequency_shift/03_field.eps}
-   \includegraphics[width=0.35\linewidth]{figs/Frequency_shift/03_spec.eps}
+   \includegraphics[width=0.35\linewidth]{figs/Frequency_shift/01_field.png}
+   \includegraphics[width=0.35\linewidth]{figs/Frequency_shift/01_spec.png}
+   \includegraphics[width=0.35\linewidth]{figs/Frequency_shift/03_field.png}
+   \includegraphics[width=0.35\linewidth]{figs/Frequency_shift/03_spec.png}
    
 \caption{Temporal (left) and spectral (right) distributions of vector potential (solid lines) and electric field (dashed line) for pulses with FWHM of 1 cycle (top), and 3 cycles (bottom) at central frequency $\omega_A = 1.0$ a.u.\  of the vector potential. Also shown is the Gaussian envelope of the vector potential. 
 } 
@@ -663,7 +663,7 @@ Note that $N$ is proportional to the more typical $N_{\text{FWHM}}$ (number of c
 
 \begin{figure}[t]
 \centering
-    \includegraphics[width=0.8\linewidth]{figs/Frequency_shift/fshift51.eps}
+    \includegraphics[width=0.8\linewidth]{figs/Frequency_shift/fshift51.png}
 \caption{(Color online)
 Ratio $\omega_E/\omega_A$ as a function of the normalized number of cycles $ N$ defined in Eq.~(\ref{eq:nbar}). The numerical results were calculated by maximizing $\tilde{E}(\omega)$ for Gaussian (dotted line), $\text{sech}$ (dashed-dotted line), and $\sin^4$ (dashed line) envelopes and are compared with the simple analytic estimate (solid line) given in Eq.~(\ref{eq:fshift}). The inset reveals a slight dependence on envelope shape, which can be attributed to the correction term in Eq.~(\ref{eq:fshift}).
 }
@@ -717,7 +717,7 @@ P(k) = \sum_{l=0}^{l_{\text{max}}} \left|\int F_{l}(-\tfrac{1}{k}, kr)Y^*_{l0}(\
 
 \begin{figure}[t]
 \centering
-    \includegraphics[width=0.8\linewidth]{figs/Frequency_shift/single_photon_ion.eps}
+    \includegraphics[width=0.8\linewidth]{figs/Frequency_shift/single_photon_ion.png}
 \caption{(Color online)
 Photoelectron spectra $P(k)$ as function of photoelectron momentum obtained for interaction of hydrogen atom with laser pulses at central frequencies $\omega_A=2$ (dashed line) and $\omega_E=2$ (solid line) and duration of (a) 10 cycles and (b) 2 cycles FWHM.
 }
@@ -765,7 +765,7 @@ such that $\tau_1\approx 405$ attoseconds, $\tau_2 \approx 811$ attoseconds and 
 
 \begin{figure}[t]
 \centering
-       \includegraphics[width=\linewidth]{figs/Frequency_shift/2s_population_comb.eps}
+       \includegraphics[width=\linewidth]{figs/Frequency_shift/2s_population_comb.png}
 \caption{(Color online)
 Numerical results for population in $2s$ state following 2-photon excitation with $\tau_2=811$ as. The vertical line marks half of the energy gap between $1s$ and $2s$ representing the resonance condition for the two photon process. Other parameters are the same as in Fig. \ref{fig:h-excited_2p}.
 }
@@ -779,8 +779,8 @@ Finally, we consider a highly nonlinear laser induced process. High harmonic gen
 
 \begin{figure*}[t]
 \centering
-    \includegraphics[width=\linewidth]{figs/Frequency_shift/HHG_w_A.eps}       
-    \includegraphics[width=\linewidth]{figs/Frequency_shift/HHG_w_E.eps}
+    \includegraphics[width=\linewidth]{figs/Frequency_shift/HHG_w_A.png}       
+    \includegraphics[width=\linewidth]{figs/Frequency_shift/HHG_w_E.png}
 \caption{(Color online)
 HHG spectrum at driver wavelength 730 nm ($\omega_\text{central}$ = 0.0625 a.u.) vs.\ number of cycles $N_\text{FWHM}$. In the upper plot the central frequency $\omega_A = \omega_\text{central}$ while in the lower panel $\omega_E = \omega_\text{central}$. The vertical white dashed lines mark field-free transition energies between excited states and the ground state, while the green solid lines mark the harmonic energies $n_p\omega_E$ with respect to the central frequency of the electric field.
 }
