@@ -4,6 +4,8 @@
 \usepackage{graphicx,bm,color,mathtools,physics,amsthm,amssymb,url}
 \setcounter{MaxMatrixCols}{20}
 
+\DeclareMathOperator{\sgn}{sgn}
+
 \DeclareMathOperator*{\SumInt}{%
 \mathchoice%
   {\ooalign{$\displaystyle\sum$\cr\hidewidth$\displaystyle\int$\hidewidth\cr}}
@@ -34,23 +36,16 @@
 \reader{John Bohn}		%  2nd person to sign thesis
 \readerThree{Jose D'Incao}       %  3rd person to sign thesis
 \readerFour{Michael Litos}        %  3rd person to sign thesis
-\readerFive{Bengt Forenburg}		%  3rd person to sign thesis
+\readerFive{Bengt Fornberg}		%  3rd person to sign thesis
 
 \abstract{  \OnePageChapter	% because it is very short
-
-	Often the abstract will be long enough to require
-	more than one page, in which case the macro
-	``$\backslash$OnePageChapter'' should {\it not}
-	be used.
-
-	But this one isn't, so it should.
-
-	\textbf{TODO}
+The development of ultrashort laser pulses with durations of a few tens of attoseconds (1 as = $10^{-18}$ s) has opened the possibility of observing and controlling the motion of electrons in matter at their natural time scale. However, the broad spectral bandwidth of the pulses pose the challenge that several linear and nonlinear pathways compete and interfere during the interaction of those pulses with the target. Experimental data, such as photoelectron angular distributions, which contain all the information about the amplitudes and phases of the initial electron wave packet describing the dynamics, are therefore difficult to analyze. Supported by results from perturbation theory and ab-initio numerical simulation, I will present the new theoretical tools I developed to identify the impact of individual transitions and interpret experimental observations. Furthermore, the new theoretical insights are used to propose experimental setups that probe electron dynamics such as reconstructing the motion of an electron wavepacket around an atomic nucleus.
+	
 	}
 
 \dedication[Dedication]{	% NEVER use \OnePageChapter here.
-	To my family and friends.
-	}
+	To my family and friends for their never ending support.
+}
 
 \acknowledgements{	\OnePageChapter	% *MUST* BE ONLY ONE PAGE!
 	Here's where you acknowledge folks who helped.

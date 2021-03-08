@@ -2,13 +2,15 @@
 \label{cha:electron_correlation}
 
 
-Solving the TDSE for two active electrons is a computationally difficult task. A naive approach would be to discretize the six spatial dimensions using finite difference. This approach would provide a straightforward solution and runs well on supercomputing systems, however, the size of the wavefunction scales like $N^6$ where $N$ is the number of grid points in each dimension. Therefore, if one were to use a typical grid of 1000 points in each dimension, the wavefunction would be $10^{18}$ points in size. Merely writing down the wavefunction in double precision floating point numbers would require 16 Exabytes of RAM, approximately 100 times more RAM than exists on the largest supercomputer in the world (Summit, Oak Ridge Leadership Computing Facility). Instead, it is more convenient to choose a coordinate system and basis that greatly reduces the size of the problem. One common approach is to use bi-spherical harmonics (e.g. \cite{vanroose2006}). In this case, the position of each electron is expanded in 3D spherical coordinates. The radius is discretized with finite difference, b-splines, finite-element discrete variable representation (FEDVR), or similar method, and the two angular coordinates are expanded in the standard 3D spherical harmonics in the same way a single active electron code would do. When taking the tensor product of the two electrons, the electron-electron repulsion term is then expanded in spherical harmonics such that
+Solving the TDSE for two active electrons is a computationally difficult task. A naive approach would be to discretize the six spatial dimensions using finite difference. This approach would provide a straightforward solution and runs well on supercomputing systems, however, the size of the wavefunction scales like $N^6$ where $N$ is the number of grid points in each dimension. Therefore, if one were to use a typical grid of 1000 points in each dimension, the wavefunction would be $10^{18}$ points in size. Merely writing down the wavefunction in double precision floating point numbers would require 16 Exabytes of RAM, approximately 100 times more RAM than exists on the largest supercomputer in the world (Summit, Oak Ridge Leadership Computing Facility). Instead, it is more convenient to choose a coordinate system and basis that greatly reduces the size of the problem. One common approach is to use bi-spherical harmonics (e.g. \cite{vanroose2006}). In this case, the position of each electron is expanded in 3D spherical coordinates. The radius is discretized with finite difference, B-splines, finite-element discrete variable representation (FEDVR), or similar method, and the two angular coordinates are expanded in the standard 3D spherical harmonics in the same way a single active electron code would do. When taking the tensor product of the two electrons, the electron-electron repulsion term is then expanded in spherical harmonics such that
 \begin{equation}
     \frac{1}{|\mathbf{r}_1-\mathbf{r}_2|}= 4\pi \sum_{\ell=0}^\infty \sum_{m=-\ell}^{m=\ell}\frac{1}{2\ell+1}\frac{r_<^\ell}{r_>^{\ell+1}}Y_{\ell m}^*(\theta_1, \phi_1)Y_{\ell m}(\theta_2, \phi_2).
 \end{equation}
 This results in a representation of the 6D space that can be used to solve the problem of two electrons in a molecular or atomic potential interacting with a laser.
 
-In the bi-spherical codes, one must discretize two radii. As the grid increases in size, the code still scales like $N^2$. To circumvent this problem, we have implemented a code that contains a single hyper-radius ($R$) and five angles that are expanded in 6D hyperspherical harmonics. Therefore, as the grid size is increased, the code scales like $N$ and the number of spherical harmonics is controlled by the laser parameters. In the following section, we will describe the details to utilize two different ``coordinate systems'' that solve the two active electron problem. The first is based on the use of Jacobi coordinates, which allows for the finite mass of the nucleus to be accounted for. The second is applied when using the infinite mass approximation for the nucleus, which allows that the distance between the two electrons to be accessed more directly. The two problems can be solved with similar sized wavefunctions, however, the time to calculate matrix elements is greatly reduced in the second method. This chapter is laid out $\cdots$ \textbf{TODO}
+In the bi-spherical codes, one must discretize two radii. As the grid increases in size, the code still scales like $N^2$. To circumvent this problem, we have implemented a code that contains a single hyper-radius ($R$) and five angles that are expanded in 6D hyperspherical harmonics. Therefore, as the grid size is increased, the code scales like $N$ and the number of spherical harmonics is controlled by the laser parameters. In the following section, we will describe the details to utilize two different ``coordinate systems'' that solve the two active electron problem. The first is based on the use of Jacobi coordinates, which allows for the finite mass of the nucleus to be accounted for. The second is applied when using the infinite mass approximation for the nucleus, which allows that the distance between the two electrons to be accessed more directly. The two problems can be solved with similar sized wavefunctions, however, the time to calculate matrix elements is greatly reduced in the second method. 
+
+This chapter covers the background for the TDSE program developed in hyperspherical coordinates in Sec.~\ref{sec:tdse_in_hyperspherical_coordinates} including the definition of hyperspherical harmonics in Sec.~\ref{sub:spherical_harmonics}, the application of Jacobi coordinates in Sec.~\ref{sub:jacobi_coordinates}, and the application of electron coordinates in Sec.~\ref{sub:jacobi_coordinates}. A discussion of the implementation of the code and first tests will be presented in Sec.~\ref{sec:implementation_and_first_tests} while Sec.~\ref{sec:outlook} provides a brief overview of the challenges that remain and useful next steps which will make it possible to run fully correlated two-electron calculations on desktop machines.
 
 \section{TDSE in hyperspherical coordinates} % (fold)
 \label{sec:tdse_in_hyperspherical_coordinates}
@@ -29,9 +31,9 @@ The resulting volume elements are
     d\Omega_5 = \cos^2\alpha \sin^2\alpha d\alpha d\omega
 \end{equation}
 \begin{equation}
-    d\omega = \sin\theta_{r_1} d\theta_{r_1} d\phi_{r_1} \sin\theta_{r_2} d\theta_{r_2} d\phi_{r_2}
+    d\omega = \sin\theta_\mathbf{r_1} d\theta_\mathbf{r_1} d\phi_\mathbf{r_1} \sin\theta_\mathbf{r_2} d\theta_\mathbf{r_2} d\phi_\mathbf{r_2}
 \end{equation}
-where $\theta_i$ and $\phi_i$ denote the angles in the $i={r_1}$ and $i={r_2}$ sub coordinate systems and $\alpha$ is the angle produced by the right triangle with sides $R$, ${r_1}$, and ${r_2}$ as shown in Fig.~\ref{fig:hyperradius}. $r_1$ and $r_2$ will denote the Jacobi Coordinates, if a finite mass nucleus is considered, or the single electron coordinates when the infinite mass approximation is made.
+where $\theta_i$ and $\phi_i$ denote the angles in the $i=\mathbf{r_1}$ and $i=\mathbf{r_2}$ sub coordinate systems and $\alpha$ is the angle produced by the right triangle with sides $R$, ${r_1}$, and ${r_2}$ as shown in Fig.~\ref{fig:hyperradius}. $r_1$ and $r_2$ will denote the Jacobi Coordinates, if a finite mass nucleus is considered, or the single electron coordinates when the infinite mass approximation is made.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.3\linewidth]{figs/Two_electron/hyperradius.pdf}
@@ -51,10 +53,10 @@ with $U_{\mathbf{K}}(R)$ being the hyperradial part of the wavefunction and $Y_{
 \begin{equation}
    \hat{H}_{K} = -\frac{1}{2} \left[\frac{\partial^2}{\partial R^2} - \frac{K(K+4)+15/4}{R^2}\right] + \frac{W(\Omega_5)}{R}.
 \end{equation}
-We solve this equation using finite difference to discretize the hyperradial function ($U_{\mathbf{K}}(R)$). For $W(\Omega_5)=1$ the equation is the 6D hydrogen atom (i.e. an electron interacting with a Coulomb potential in 6 spacial dimensions, rather than the typical 3 spacial dimension) with an analytic solution that can be used to test the hyperadial portion of the code (see \cite{sorevik2005} for energy levels). The angular portion of the equations is then expanded in hyperspherical harmonics. The details of the expansion are the focus of the remainder of this section.
+We solve this equation using finite difference to discretize the hyperradial function $U_{\mathbf{K}}(R)$. For $W(\Omega_5)=1$ the equation is the 6D hydrogen atom (i.e. an electron interacting with a Coulomb potential in 6 spacial dimensions, rather than the typical 3 spacial dimension) with an analytic solution that can be used to test the hyperadial portion of the code (see \cite{sorevik2005} for energy levels). The angular portion of the equations is then expanded in hyperspherical harmonics. The details of the expansion are the focus of the remainder of this section.
 % subsection tdse_in_hyperspherical_coordinates (end)
 
-\subsection{Hyperspherical Harmonic Definition} % (fold)
+\subsection{Hyperspherical harmonic definition} % (fold)
 \label{sub:spherical_harmonics}
 There are multiple ways to define hyperspherical harmonics in 6D. Since they are equivalent up to a unitary rotation, it is best to choose those that match the symmetry of the problem. In our case, we choose spherical harmonics that contain a hyperangle $\alpha$ that connects two-3D spaces as shown in Fig.~\ref{fig:hyperradius}. The 3D spaces belong to coordinates $\mathbf{r}_1$ and $\mathbf{r}_2$ with radii $r_1$ and $r_2$ respectively. These spaces will either represent a Jacobi coordinate (Sec.~\ref{sub:jacobi_coordinates}) or the space of each electron (Sec.~\ref{sub:electronic_coordinates}). The resulting 6D spherical harmonics are given by
 \begin{align}
@@ -79,14 +81,14 @@ hyperspherical harmonics become
 which highlights the three main components including the dependence of the angles in the spaces $r_1$ and $r_2$ as well as the dependence on the hyperangle $\alpha$ that couples the two spaces.
 % section spherical_harmonics (end)
  
-\subsection{Jacobi Coordinates} % (fold)
+\subsection{Jacobi coordinates} % (fold)
 \label{sub:jacobi_coordinates}
 Jacobi coordinates are often used for studying many body interactions. They are defined by choosing a particle and defining a relative coordinate between the chosen particle and a second particle. The next particle is defined by a coordinate connecting the center of mass of all the previous particles to the new particle. The pattern continues until all particles have been included. The result is a set of coordinates that has dimension $3(N-1)$ assuming the exact location of the center of mass $R_{cm}$ in space is irrelevant. 
 For a three particle system, the center of mass is given by
 \begin{equation}
-\mathbf{R}_{cm} = \frac{m_1 \mathbf{r_1} + m_2 \mathbf{r_2} + m_3 \mathbf{r_3}}{M}
+\mathbf{R}_{cm} = \frac{m_1 \mathbf{r}_1 + m_2 \mathbf{r}_2 + m_3 \mathbf{r}_3}{M}
 \end{equation}
-with $m_i$ being the mass of the $ith$ particle, $\mathbf{r}_i$ being its spacial coordinate, and $M = \sum_{i=1}^3m_i$.
+with $m_i$ being the mass of the $ith$ particle, $\mathbf{r}_i$ being its spatial coordinate, and $M = \sum_{i=1}^3m_i$.
 The three convenient sets of Jacobi coordinates are
 \begin{align}
 \label{eq:jacobi_coords}
@@ -116,15 +118,15 @@ The RRCs for rotating between coordinate system $i$ and $j$ can be written expli
 \nonumber
     & \times \braket{\lambda_1 0 \lambda_3 0}{\ell_{x_j} 0} \braket{\lambda_2 0 \lambda_3 0}{\ell_{x_i} 0} \braket{\lambda_2 0 \lambda_4 0}{\ell_{y_j} 0} \braket{\lambda_1 0 \lambda_4 0}{\ell_{y_i} 0} \\
 \nonumber
-    & \times sgn(a_{12})^{\lambda_1}sgn(a_{21})^{\lambda_2}sgn(a_{11})^{\lambda_3}sgn(a_{22})^{\lambda_4} \begin{bmatrix}
-   \lambda_3 & \lambda_1 & \ell_{x_j} \\
-   \lambda_2 & \lambda_4 & \ell_{y_j} \\
-   l_{x_i}   & l_{y_i}   & L
-   \end{bmatrix} \\
+    & \times \sgn(a_{12})^{\lambda_1}\sgn(a_{21})^{\lambda_2}\sgn(a_{11})^{\lambda_3}\sgn(a_{22})^{\lambda_4} \begin{bmatrix}
+  \lambda_3 & \lambda_1 & \ell_{x_j} \\
+  \lambda_2 & \lambda_4 & \ell_{y_j} \\
+  l_{x_i}   & l_{y_i}   & L
+  \end{bmatrix} \\
     & \times \sum\limits_{\nu,\mu} (-1)^{\mu}|a_{12}|^{2\mu + \lambda_1 + \lambda_2} |a_{12}|^{2\nu + \lambda_3 + \lambda_4} C_{\lambda_1 \lambda_2}^{\mu} C_{\lambda_3 \lambda_4}^{\nu}
     \label{eq:RRC}
 \end{align}
-where $sgn(a_{ij})$ is the sign of $a_{ij}$, between spherical harmonics with quantum numbers $K=2n_i+\ell_{x_i}+\ell_{y_i}=2n_j+\ell_{x_j}+\ell_{y_j}$, the sums go over all possible combinations of $K=2(\mu+\nu)+\lambda_1+\lambda_2+\lambda_3+\lambda_4$ with $(\lambda_i, \mu, \nu = 0,1,2,\cdots)$, $\braket{\lambda_1 0 \lambda_3 0}{\ell_{x_j} 0}$ is a Clebsch Gordan coefficient,
+where $\sgn(a_{ij})$ is the sign of $a_{ij}$, between spherical harmonics with quantum numbers $K=2n_i+\ell_{x_i}+\ell_{y_i}=2n_j+\ell_{x_j}+\ell_{y_j}$, the sums go over all possible combinations of $K=2(\mu+\nu)+\lambda_1+\lambda_2+\lambda_3+\lambda_4$ with $(\lambda_i, \mu, \nu = 0,1,2,\cdots)$, $\braket{\lambda_1 0 \lambda_3 0}{\ell_{x_j} 0}$ is a Clebsch Gordan coefficient,
      $\begin{bmatrix}
         \lambda_3 & \lambda_1 & \ell_{x_j} \\
         \lambda_2 & \lambda_4 & \ell_{y_j} \\
@@ -147,7 +149,7 @@ which can be rewritten as
 \begin{equation}
     W(\Omega_5) = R V(\mathbf{R}) = \frac{1}{x_1\sqrt{2}} - \frac{Z\sqrt{2}}{|\hat{y}_1+\hat{x}_1|} - \frac{Z\sqrt{2}}{|\hat{y}_1-\hat{x}_1|}.
 \end{equation}
-By using the hyperspherical harmonics defined in Eq.~\ref{eq:hyperspherical_harm_simple}, with $\mathbf{r}_1=\mathbf{x}_1$ and $\mathbf{r}_2=\mathbf{y}_1$, the first term is easy to calculate through a 1D integral over $\alpha$ written explicitly below. However, the next two terms would require a 5D integral which is expensive and numerically unstable if computed directly. Instead, we will exchange particles in the coordinate system to allow the $\mathbf{x}_i$ Jacobi coordinate to correspond to the distance between the two interacting particles. The result is a 1D integral over $\alpha$ that is similar to the $e^-$-$e^-$ repulsion term. To achieve this, we utilize RRC (Eq.~\ref{eq:RRC}) which allow us to write
+By using the hyperspherical harmonics defined in Eq.~\ref{eq:hyperspherical_harm_simple}, with $\mathbf{r}_1=\mathbf{x}_1$ and $\mathbf{r}_2=\mathbf{y}_1$, the first term is easy to calculate through a 1D integral over $\alpha$ written explicitly below. However, the next two terms would require a 5D integral which is expensive and numerically unstable if computed directly. Instead, we will exchange particles in the coordinate system to allow the Jacobi coordinate $\mathbf{x}_i$ to correspond to the distance between the two interacting particles. The result is a 1D integral over $\alpha$ that is similar to the electron-electron repulsion term. To achieve this, we utilize RRC (Eq.~\ref{eq:RRC}) which allow us to write
 \begin{equation}
     Y^{\ell_{x_i},\ell_{y_i}}_{K,L,M} = \sum\limits_{\ell_{x_j}\ell_{y_j}} <\ell_{x_j},\ell_{y_j}|\ell_{x_i},\ell_{y_i}>_{K,L} Y^{\ell_{x_j},\ell_{y_j}}_{K,L,M}(\Omega_{5_j})\, ,
 \end{equation}
@@ -164,7 +166,7 @@ where the delta functions arise from the integral over $d\omega$.
 
 The Coulomb potential for the electron with mass $m_3$ in $W(\Omega_5)$ becomes
 \begin{align}
-    \bra{K'\ell_{x_1}'\ell_{y_1}'L'M'} R\frac{-Z}{r_{13}} \ket{K \ell_{x_1} \ell_{y_1}LM} = \sum_{\ell_{x_2},\ell_{y_2}}& <\ell_{x_2},\ell_{y_2}|\ell_{x_1}',\ell_{x_1}'>_{K',L'} <\ell_{x_2},\ell_{y_2}|\ell_{x_1},\ell_{x_1}>_{K,L} \\
+    \bra{K'\ell_{x_1}'\ell_{y_1}'L'M'} -Z\frac{R}{r_{13}} \ket{K \ell_{x_1} \ell_{y_1}LM} = \sum_{\ell_{x_2},\ell_{y_2}}& <\ell_{x_2},\ell_{y_2}|\ell_{x_1}',\ell_{x_1}'>_{K',L'} <\ell_{x_2},\ell_{y_2}|\ell_{x_1},\ell_{x_1}>_{K,L} \\
     &\times \bra{K'\ell_{x_2}'\ell_{y_2}'L'M'} \frac{-Z}{\cos\alpha_2} \ket{K\ell_{x_2}\ell_{y_2}LM}
 \end{align}
 with $P_{RRC}=1$  and 
@@ -174,7 +176,7 @@ with $P_{RRC}=1$  and
 \end{align}
 and the Coulomb potential for the other electron (with $m_2$) of $W(\Omega_5)$ becomes
 \begin{align}
-    \bra{K'\ell_{x_1}'\ell_{y_1}'L'M'} R\frac{-Z}{r_{12}} \ket{K \ell_{x_1} \ell_{y_1}LM} = \sum_{\ell_{x_3},\ell_{y_3}}& <\ell_{x_3},\ell_{y_3}|\ell_{x_1}',\ell_{x_1}'>_{K',L'} <\ell_{x_3},\ell_{y_3}|\ell_{x_1},\ell_{x_1}>_{K,L} \\
+    \bra{K'\ell_{x_1}'\ell_{y_1}'L'M'} -Z\frac{R}{r_{12}} \ket{K \ell_{x_1} \ell_{y_1}LM} = \sum_{\ell_{x_3},\ell_{y_3}}& <\ell_{x_3},\ell_{y_3}|\ell_{x_1}',\ell_{x_1}'>_{K',L'} <\ell_{x_3},\ell_{y_3}|\ell_{x_1},\ell_{x_1}>_{K,L} \\
     &\times \bra{K'\ell_{x_3}'\ell_{y_3}'L'M'} \frac{-Z}{\cos\alpha_3} \ket{K\ell_{x_3}\ell_{y_3}LM}
 \end{align}
 with $P_{RRC}=2$  and 
@@ -222,7 +224,7 @@ Since the $M$ quantum number does not change and $M=0$ for the ground state of H
 
 % section jacobi_coordinates (end)
 
-\subsection{Electronic Coordinates} % (fold)
+\subsection{Electronic coordinates} % (fold)
 \label{sub:electronic_coordinates}
 To remove the need for RRCs due to their numerical complexity for high $K$ values, we will use the nucleus as the origin and label the coordinates from the proton to the $i$-th electron as $\mathbf{r}_i$ where $i=1,2$. Therefore, we have
 \begin{align}
@@ -296,7 +298,7 @@ In this derivation, we used $M=0$ therefore $m_{r_1}=-m_{r_2}$. For $M\ne0$ adju
 
 % subsection infinite_mass_nucleus (end)
 
-\section{Implementation and First Tests} % (fold)
+\section{Implementation and first tests} % (fold)
 \label{sec:implementation_and_first_tests}
 The RRC and non-RRC methods were both implemented in the same code, based on the SAE-TDSE method. This allows for two electron calculations to be performed by simply changing a few parameters in an input file. 
 
@@ -310,7 +312,7 @@ The RRC and non-RRC methods were both implemented in the same code, based on the
   \label{fig:he_2e_converg}
 \end{figure}
 
-To ensure the code is working properly, we have ran test on the convergences of the ionization potential and low lying bound states shown in Fig.~\ref{fig:he_2e_converg}. Panel (a) shows the convergence of the RRC method in blue as a function of the grand angular momentum using second order finite difference with a grid spacing of 0.05 au. The convergence is in good agreement with the green lines from a similar code from \cite{khan2015}. Additionally, the NIST  (red) and SAE potential (black) energy levels are shown. Panel (b) shows the same data for the non-RRC method shown in blue. The non-RRC method has more low lying bound states that are due to not separating out the eigenstates with two spin up electrons. Taking account of it will reduce the runtime of the non-RRC method. As one can see, both methods produce highly accurate bound states quite quickly. The excited state, however, are slow to converge only outperforming the DFT based SAE potential energy levels with $K_{max} > 48$. As $K_{max}$ increases the matrix elements become increasingly difficult to calculate and the size of the wavefunction grows rapidly. This greatly limits the usefulness of this method for two electron calculations without the use of supercomputing resources.
+To ensure the code is working properly, we have ran test on the convergences of the ionization potential and low lying bound states shown in Fig.~\ref{fig:he_2e_converg}. Panel (a) shows the convergence of the RRC method in blue as a function of the grand angular momentum using second order finite difference with a grid spacing of 0.05 au. The convergence is in good agreement with the green lines from a similar code \cite{khan2015}. Additionally, the NIST  (red) and SAE potential (black) energy levels are shown. Panel (b) shows the same data for the non-RRC method shown in blue. The non-RRC method has more low lying bound states that are due to not separating out the eigenstates with two spin up electrons. Taking account of it will reduce the runtime of the non-RRC method. As one can see, both methods produce highly accurate bound states quite quickly. The excited states, however, are slow to converge only outperforming the DFT based SAE potential energy levels with $K_{max} > 48$. As $K_{max}$ increases the matrix elements become increasingly difficult to calculate and the size of the wavefunction grows rapidly. This greatly limits the usefulness of this method for two electron calculations without the use of supercomputing resources.
 
 
 \begin{figure}[!ht]
