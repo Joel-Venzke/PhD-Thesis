@@ -17,7 +17,7 @@
 
 %%%%%%%%%%%%   All the preamble material:   %%%%%%%%%%%%
 
-\title{Theoretical studies on imaging of election motion and excitation on ultrafast time scales}
+\title{Theoretical studies on imaging of electron motion and excitation on ultrafast time scales}
 
 \author{J.}{Venzke}
 
@@ -38,28 +38,32 @@
 \readerFour{Michael Litos}        %  3rd person to sign thesis
 \readerFive{Bengt Fornberg}		%  3rd person to sign thesis
 
-\abstract{  \OnePageChapter	% because it is very short
-The development of ultrashort laser pulses with durations of a few tens of attoseconds (1 as = $10^{-18}$ s) has opened the possibility of observing and controlling the motion of electrons in matter at their natural time scale. However, the broad spectral bandwidth of the pulses pose the challenge that several linear and nonlinear pathways compete and interfere during the interaction of those pulses with the target. Experimental data, such as photoelectron angular distributions, which contain all the information about the amplitudes and phases of the initial electron wave packet describing the dynamics, are therefore difficult to analyze. Supported by results from perturbation theory and ab-initio numerical simulation, I will present the new theoretical tools I developed to identify the impact of individual transitions and interpret experimental observations. Furthermore, the new theoretical insights are used to propose experimental setups that probe electron dynamics such as reconstructing the motion of an electron wavepacket around an atomic nucleus.
-	
-	}
+\abstract{  \OnePageChapter
+The development of ultrashort laser pulses with durations of a few tens of attoseconds (1 as = $10^{-18}$ s) has opened the possibility of observing and controlling the motion of electrons in matter at their natural time scale. However, the broad spectral bandwidth of the pulses poses the challenge that several linear and nonlinear pathways compete and interfere during the interaction of those pulses with the target.
+The ionized electrons contain information about the target, the electronic wavepacket prior to ionization, the laser pulse, and the various pathways to ionization. In this thesis, we will use numerical and analytic tools to study and interpret these ionization spectra. Additionally, we will examine electron excitation to Ryberg states driven by intense IR pulses and discuss the tools we are developing to study electron correlation.
+
+First, we will give a brief review of ultrafast and ultrastrong physics literature. This is followed by an overview of the numerical and analytic methods used in this thesis including our recent insights in frequency corrections for short pulses and work on using radial basis functions to solve the time-dependent Schr\"odinger equation. We then focus on few photon ionization including effects induced by ultrashort pulses, the development of novel generalized asymmetry parameters, and the reconstruction of electronic wavepackets undergoing attosecond motion. Next, we present theoretical studies concerning the analysis of excitation and stabilization effects related to Rydberg states in the case of both linear and bi-circular laser pulses. Finally, we will discuss the development and first tests of a fully correlated two-electron code that utilizes a basis of hyperspherical harmonics.
+}
 
 \dedication[Dedication]{	% NEVER use \OnePageChapter here.
-	To my family and friends for their never ending support.
+	To my parents Jim and Kelli, siblings Tom and Andrea, brother-in-law Bobby, niece Jaidyn, and nephew Robby.
 }
 
 \acknowledgements{	\OnePageChapter	% *MUST* BE ONLY ONE PAGE!
-	Here's where you acknowledge folks who helped.
-	But keep it short, i.e., no more than one page,
-	as required by the Grad School Specifications.
+It is amazing how important a great support system is to achieving a PhD. There are many more friends, family members, acquaintances, and colleagues who have helped me along the way than I have space to mention here, but I will do my best. To start off, I would like to thank my PhD advisor, Andreas Becker, for his never ending support, both professionally and personally, during my PhD. I would also like to thank my committee members John Bohn, Jose D’Incao, Michael Litos, and Bengt Fornberg for the fruitful scientific discussions along the way. 
 
-	\textbf{TODO}
+I would be admiss if I didn't acknowledge my high school physics teacher David Sklenicka for sparking my interest in physics. Without his influence, it is very unlikely I would have pursued a PhD in physics. I would also like to extend many thanks my undergraduate community at Drake University, most notably Klaus Bartschat and Nicolas Douguet for developing my interest in ultrafast physics and Timothy Urness for inspiring my interest in computer science.
+
+I extend great gratitude to my fellow lab mates and collaborators both past and present: Andrew Spott, Cory Goldsmith, Erez Shani, Brynn Reiff, Tennesse Joyce, Yonas Gebre, Spencer Walker, Andres Mora, Bejan Ghomashi, Zetong Xue, Lucas Kolanz, Edward MacDonald, and Agnieszka Jaron-Becker. The countless scientific discussions and support through out my PhD have been instrumental in developing the contents of this thesis. 
+
+Finally, I would like to extend my greatest thanks to my parents Jim and Kelli and siblings Andrea and Tom for the endless support when there was the enviable setback, multi-week long hunts for bugs in my code, and when life threw curve balls. Without their support, there is no way I would have been able complete my PhD. 
 }
 
 % \IRBprotocol{E927F29.001X}	% optional!
 
-\ToCisShort	% use this only for 1-page Table of Contents
+% \ToCisShort	% use this only for 1-page Table of Contents
 
-\LoFisShort	% use this only for 1-page Table of Figures
+% \LoFisShort	% use this only for 1-page Table of Figures
 % \emptyLoF	% use this if there is no List of Figures
 
 \LoTisShort	% use this only for 1-page Table of Tables
@@ -84,7 +88,6 @@ The development of ultrashort laser pulses with durations of a few tens of attos
 \bibliographystyle{plain}	% or "siam", or "alpha", etc.
 \nocite{*}		% list all refs in database, cited or not
 \bibliography{ref}		% Bib database in "refs.bib"
-% \bibliography{ref,theory,ee_sec}		% Bib database in "refs.bib"
 
 %%%%%%%%%   then the Appendices, if any   %%%%%%%%%
 % \appendix
