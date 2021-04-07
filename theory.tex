@@ -265,7 +265,7 @@ For equally spaced grids used in our finite difference methods, either the midpo
 \begin{equation}
     \int_{x} f(x')dx' \approx \sum_{i=1}^n c_i f(x_i)
 \end{equation}
-where $f(x_i)$ is the value of the function at $x_i$ and $x$ is the integration interval. The midpoint rule is used if the grid is placed at half grid points on the interval (i.e. $x_i = (2i+1)dx/3$ for $i=0,1,2,...,n$). In this case $c_i = 1/dx$ for all grid points. For the trapezoid rule the grid points sample the ends of the integration range resulting in $c_0 = c_n = 1/2dx$ and $c_i = 1/dx$ for $i=1, \ldots, n-1$. 
+where $f(x_i)$ is the value of the function at $x_i$ and $x$ is the integration interval. The midpoint rule is used if the grid is placed at half grid points on the interval (i.e. $x_i = (2i+1)dx/2$ for $i=0,1,2,...,n$). In this case $c_i = 1/dx$ for all grid points. For the trapezoid rule the grid points sample the ends of the integration range resulting in $c_0 = c_n = 1/2dx$ and $c_i = 1/dx$ for $i=1, \ldots, n-1$. 
 
 In the case of the RBF code, the MD node set comes with a provided integration weight for the angular integration and the radial integration is done via the midpoint rule. 
 For the spherical code, the angular integration is done analytically since spherical harmonics are orthonormal.
