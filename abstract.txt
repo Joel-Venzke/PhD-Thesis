@@ -2,5 +2,8 @@ The development of ultrashort laser pulses with durations of a few tens of attos
 I will present my studies on understanding the impacts of short pulses on atomic ionization, the generalized asymmetry parameters we developed, and a method for reconstructing electronic wavepackets undergoing attosecond motion. Additionally, I will touch on Rydberg state excitation by intense IR laser pulses and my work towards solving the TDSE numerically for two fully correlated electrons in a potential interacting with a laser pulse.
 
 
-The development of ultrashort laser pulses with durations of a few tens of attoseconds (1 as = $10^{−18}$ s) has opened the possibility of observing and controlling the motion of electrons in matter at their natural time scale. However, the broad spectral bandwidth of the pulses pose the challenge that several linear and nonlinear pathways compete and interfere during the interaction of those pulses with the target. 
-I will present my studies on understanding the impacts of short pulses on atomic ionization, the generalized asymmetry parameters (GAPs) we developed to study ionization of electrons in superposition states, and a method for reconstructing electronic wavepackets undergoing attosecond motion. Additionally, I will touch on Rydberg state excitation by intense 
+Shorter version (currently 768/780 char):
+
+The development of ultrashort laser pulses with durations of a few tens of attoseconds (1as = 10^{−18}s) has opened the possibility of observing and controlling the motion of electrons in matter at their natural time scale. However, the broad spectral bandwidth of the pulses leads to several pathways interfering during the ionization process. 
+I will present my studies on understanding the impacts of short pulses on atomic ionization, the generalized asymmetry parameters we developed, and a method for reconstructing ultrafast electronic wavepackets. Additionally, I will touch on Rydberg state excitation by intense IR laser pulses and my work towards solving the TDSE numerically for two fully correlated electrons in a potential interacting with a laser pulse.
+
